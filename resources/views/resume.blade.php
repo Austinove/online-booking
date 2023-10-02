@@ -12,7 +12,7 @@
 				<!-- Page Title -->
 				<h2>Resume Application</h2>
 				<!-- Page Description -->
-				<p class="my-5">Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta.</p>
+				<p class="my-5">Review and verify your application details before proceeding to resume your registration by entering your unique application code. Take a moment to confirm your information and ensure accuracy before you continue with your application using your dedicated code.</p>
 			</div>
 		</div>
 	</div>

@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-sm-8 m-auto">
 				<h1>Contact Us</h1>
-				<p class="my-5">Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta.</p>
+				<p class="my-5">Our dedicated support team is here to assist you. Find our contact information and reach out for any questions or assistance Contact us for inquries, support or feedback. Here is how you can get in touch with our team.</p>
 			</div>
 		</div>
 	</div>
@@ -22,8 +22,8 @@
 							<i class="ti-mobile"></i>
 						</div>
 						<div class="details">
-							<h3>(00) 789 456 7890 (USA)</h3>
-							<h3>(88) 016 725 0455 (UK)</h3>
+							<h3>(+256) 760 718 162 (UGA)</h3>
+							<h3>(+256) 758 552 508 (UGA)</h3>
 						</div>
 					</div>
 				</div>
@@ -35,8 +35,8 @@
 							<i class="ti-map-alt"></i>
 						</div>
 						<div class="details">
-							<h3>36. St Michael’s St, Oxford OX1, UK</h3>
-							<h3>123, Pennsylvania, USA</h3>
+							<h3>16 Upper Kololo Terrace, Kampala</h3>
+							<h3>9J58+P75, Kalinabiri Road, Kampala</h3>
 						</div>
 					</div>
 				</div>

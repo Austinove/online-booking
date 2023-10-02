@@ -34,24 +34,21 @@
                         <a href="{{ route('forms') }}" style="text-decoration: none;">
                             <i class="ti-target text-primary h1"></i>
                             <h3 class="mt-4 text-capitalize h5 ">Start Registration</h3>
-                            <p class="regular text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam non, recusandae
-							tempore ipsam dignissimos molestias.</p>
+                            <p class="regular text-muted">Begin your national ID registration and access government services seamlessly. start your journey to secure identification in just a few steps.</p>
                         </a>
 					</div>
 					<div class="col-lg-4 col-md-6 mt-5 mt-md-0 text-center">
                         <a href="{{ route('resume') }}" style="text-decoration: none;">
                             <i class="ti-loop text-primary h1"></i>
                             <h3 class="mt-4 text-capitalize h5 ">Resume Registration</h3>
-                            <p class="regular text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam non, recusandae
-                                tempore ipsam dignissimos molestias.</p>
+                            <p class="regular text-muted">Continiue your national ID registration where you left off. Pick up where you paused and complete your registration process.</p>
                         </a>
 					</div>
 					<div class="col-lg-4 col-md-12 mt-5 mt-lg-0 text-center">
                         <a href="{{ route('status') }}" style="text-decoration: none;">
                             <i class="ti-eye text-primary h1"></i>
                             <h3 class="mt-4 text-capitalize h5 ">Check Status</h3>
-                            <p class="regular text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam non, recusandae
-                                tempore ipsam dignissimos molestias.</p>
+                            <p class="regular text-muted">Track the status of your national ID application in real-time. Stay updated on the progress of your ID registration with just a few clicks.</p>
                             </p>
                         </a>
 					</div>
@@ -75,17 +72,14 @@
 				<div class="col-lg-6 mr-auto align-self-center">
 					<div class="feature-content">
 						<!-- Feature Title -->
-						<h2>Increase your productivity with </h2>
+						<h2>Effortless Registration Made Secure. </h2>
 						<!-- Feature Description -->
-						<p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-							aliquip ex ea commodo consequat.</p>
+						<p class="desc">Discover the streamlined, secure, and user-friendly path to national ID registration, ensuring efficiency and data protection.</p>
 					</div>
 					<!-- Testimonial Quote -->
 					<div class="testimonial">
 						<p>
-							"InVision is a window into everything that's being designed at Twitter. It gets all of our best work in one
-							place."
+							"Empowering citizens with secure, efficient and user-centric national ID registration-where your identity."
 						</p>
 					</div>
 				</div>
