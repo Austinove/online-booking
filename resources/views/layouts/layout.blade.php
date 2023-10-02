@@ -76,7 +76,7 @@
 
 	<footer>
 	<div class="text-center bg-dark py-4">
-		<small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Uganda Institute of Information and Communications Technology. All Rights Reserved.<a </a></small class="text-secondary">
+		<small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Uganda Institute of Information and Communications Technology. All Rights Reserved.</small class="text-secondary">
 	</div>
 	</footer>
 
