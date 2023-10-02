@@ -34,6 +34,23 @@ Route::get('/resume', function () {
 Route::get('/status', function () {
     return view('status');
 })->name('status');
+Route::get('/new-appointments', function () {
+    return view('backend.new_appointments');
+})->name('new_appointments');
+Route::get('/appointments', function () {
+    return view('backend.appointments');
+})->name('appointments');
+Route::get('/pending-appointments', function () {
+    return view('backend.pending_appointments');
+})->name('pending_appointments');
+
+Route::get('/unattended-appointments', function () {
+    return view('backend.unattended_appointments');
+})->name('unattended_appointments');
+
+Route::get('/profile', function () {
+    return view('backend.profile');
+})->name('profile');
 
 Auth::routes();
 
