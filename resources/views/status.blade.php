@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-sm-8 m-auto">
 				<h2>Your Application Status</h2>
-				<p class="my-5">Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta.</p>
+				<p class="my-5">Enter your application code to access the current status of your registration. Stay updated on your application progress by simply inputting your unique code to see where it stands.</p>
 			</div>
 		</div>
 	</div>

@@ -12,7 +12,7 @@
 				<!-- Page Title -->
 				<h1>How to Register</h1>
 				<!-- Page Description -->
-				<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta.</p>
+				<p>Welcome to our instructions page. Here, you'll find step-by-step guidance on how to complete your national ID registration. Get started with your registration process by following our comprehensive instructions for a seamless experience</p>
 			</div>
 		</div>
 	</div>
@@ -45,8 +45,8 @@
 							<h3>Use License</h3>
 						</div>
 						<div class="policy-details">
-							<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vivamus suscipit tortor eget felis porttitor volutpat. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinara.</p>
-							<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vivamus suscipit tortor eget felis porttitor volutpat. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinara.</p>
+							<p>Please review the terms and conditions of the use for this sytem. You use of this platform is subject to our licensing agreement. Before proceeding, take a moment to familiarize yourself with the usage terms and conditions outlined in our license agreement for this registration system.</p>
+							<p>By using this system, you agree to adhere to the terms of our license, ensuring responsible and lawful usage. Our licensing terms aim to maintain the security and integrity of the registration process, providing a safe and reliable experience for all users.</p>
 						</div>
 					</div>
 					<!-- Disclaimer -->
@@ -55,16 +55,17 @@
 							<h3>Disclaimer</h3>
 						</div>
 						<div class="policy-details">
-							<p>Donec rutrum congue leo eget malesuada. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet quam id dui posuere blandit. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
+							<p>This system is intended solely for national ID registration purposes. Any misuse or unauthorised access is strictly prohibited. he information provided in this system is for registration purposes only and should not be considered legal advice or official documentation.</p>
+							<p> While every effort is made to ensure the accuracy of the information, we cannot guarantee that all data is error-free. Users are encouraged to review their details during the registration process. Please read and acknowledge our disclaimer, emphasizing responsible and lawful usage of this platform for national ID registration.</p>
 						</div>
-					</div>
+					</div
 					<!-- Limitations -->
 					<div id="limitations" class="policy-item">
 						<div class="title">
 							<h3>Limitations</h3>
 						</div>
 						<div class="policy-details">
-							<p>Donec rutrum congue leo eget malesuada. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet quam id dui posuere blandit. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
+							<p>Please be aware that this system has certain constraints. It does not provide legal advice, and the registration process may not be available during maintenance periods. While we strive for accuracy, we cannot gurantee the completeness of data entered by users. Additionally, this system does not handle issues unrelated to national ID registration.</p>
 						</div>
 					</div>
 					<!-- Governing Law -->
@@ -73,8 +74,8 @@
 							<h3>Governing Law</h3>
 						</div>
 						<div class="policy-details">
-							<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vivamus suscipit tortor eget felis porttitor volutpat. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinara.</p>
-							<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vivamus suscipit tortor eget felis porttitor volutpat. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinara.</p>
+							<p>The use of this system is subject to the laws and regulations of Uganda. Users are required to comply with these legal provisions while accessing and using the platform We advise users to familiarize themselves with the governing laws of Uganda to ensure compliance and a clear understanding of their rights and responsiblities while using this system.</p>
+							<p>By using this system, you acknowledge that it operates under the jurisdiction of Uganda, and any legal matters related to its usage will be governed by the laws of this jurisdiction. Please note that any disputes or leagl issues arising from the use of this system will be resolved in accordance with the laws of Uganda.</p>
 						</div>
 					</div>
 				</div>
