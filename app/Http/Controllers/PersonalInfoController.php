@@ -39,16 +39,16 @@ class PersonalInfoController extends Controller
     public function store(Request $request)
     {
         //file validation
-        Validator::validate($request->all(), [
-            'lc_letter' => [
-                'required',
-                File::types(['pdf'])
-            ],
-            'diso_letter' => [
-                'required',
-                File::types(['pdf'])
-            ]
-        ]);
+        // Validator::validate($request->all(), [
+        //     'lc_letter' => [
+        //         'required',
+        //         File::types(['pdf'])
+        //     ],
+        //     'diso_letter' => [
+        //         'required',
+        //         File::types(['pdf'])
+        //     ]
+        // ]);
 
         //initializing file variables
         $lc_letter = "";
@@ -60,11 +60,6 @@ class PersonalInfoController extends Controller
             $extension = $file->getClientOriginalExtension();
             $lc_letter = $name . "_lc_" . time() . "." . $extension;
             $file->move("applicants", $lc_letter);
-        } else {
-            return redirect()->back()->with([
-                'message' => 'No LC letter attached!', 
-                'status' => 'danger'
-            ]);
         }
         if ($request->file("diso_letter")) {
             $file = $request->file("diso_letter");
@@ -73,11 +68,6 @@ class PersonalInfoController extends Controller
             $extension = $file->getClientOriginalExtension();
             $diso_letter = $name . "_diso_" . time() . "." . $extension;
             $file->move("applicants", $diso_letter);
-        } else {
-            return redirect()->back()->with([
-                'message' => 'No LC letter attached!', 
-                'status' => 'danger'
-            ]);
         }
 
         //generate token
@@ -148,6 +138,16 @@ class PersonalInfoController extends Controller
             $code = $code.$character;
         }
         return $code;
+    }
+
+    public function return_step_one($id) {
+        $personal_info = PersonalInfo::find($id);
+        return redirect()->back()->with([
+            'step' => 1,
+            'token' => $personal_info->unique_code,
+            'person_id' => $id,
+            'data' => $personal_info
+        ]);
     }
 
     /**

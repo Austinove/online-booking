@@ -6,6 +6,9 @@
 	return "Take note of the Unique CodeData";
 	};
 </script> -->
+@if(session('data'))
+print_r(data)
+@endif
 @if(session('token'))
 <div class="modal fade" data-bs-backdrop="static" id="verticalycentered" tabindex="-1">
 	<div class="modal-dialog modal-dialog-centered">
@@ -274,7 +277,7 @@
 									</div>
 									<hr />
 									@if(session('person_id'))
-									<input class="form-control main" type="hiden" name="personal_id" value="{{ session('person_id') }}">
+									<input class="form-control main" type="hidden" name="personal_id" value="{{ session('person_id') }}">
 									@endif
 									<div class="col-md-6 mb-2">
 										<label for="residence_type" class="form-label">Residence Type<small class="text-danger">*</small></label>
@@ -443,10 +446,8 @@
 
 									<hr />
 									<div class="col-md-12 d-flex mt-2">
-										<button type="submit" class="btn btn-secondary me-auto">
-											<i class="ti-arrow-left"></i> Previous 
-										</button>
-										<button type="submit" class="btn btn-primary ms-auto">
+										<a name="" id="" class="btn btn-sm btn-primary me-auto" href="{{ route('return_step1', ['id' => session('person_id')]) }}" role="button"></a>
+										<button type="submit" class="btn btn-sm btn-primary ms-auto">
 											Next Form <i class="ti-arrow-right"></i>
 										</button>
 									</div>

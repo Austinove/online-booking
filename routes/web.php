@@ -30,6 +30,7 @@ Route::get('/contact', function () {
 Route::get('/form', [PersonalInfoController::class, "index"])->name('forms');
 Route::post('/personal_info', [PersonalInfoController::class, "store"])->name('personal_info');
 Route::post('/residence', [ResidenceController::class, "store"])->name('residence');
+Route::post('/return_step1/{id}', [ResidenceController::class, "return_step_one"])->name('return_step1');
 Route::get('/resume', function () {
     return view('resume');
 })->name('resume');
