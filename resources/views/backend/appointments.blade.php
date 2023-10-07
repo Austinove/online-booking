@@ -35,7 +35,7 @@
                                 <td>28</td>
                                 <td>2016-05-25</td>
                                 <td>
-                                    <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
+                                    <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="{{ route('applicant', ['id' => 1]) }}" role="button">More...</a>
                                 </td>
                             </tr>
                              <tr>

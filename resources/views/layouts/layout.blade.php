@@ -40,7 +40,7 @@
 
 	<nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
 		<div class="container py-1">
-			<a class="navbar-brand" href="index.html"><img src="{{ asset('/assets/images/logo.png')}}" alt="logo" style="height: 55px;"></a>
+			<a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('/assets/images/logo.png')}}" alt="logo" style="height: 55px;"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="ti-menu"></span>
 			</button>

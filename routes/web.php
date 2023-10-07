@@ -48,6 +48,10 @@ Route::get('/unattended-appointments', function () {
     return view('backend.unattended_appointments');
 })->name('unattended_appointments');
 
+Route::get('/application/{id}', function () {
+    return view('backend.application_details');
+})->name('applicant');
+
 Route::get('/profile', function () {
     return view('backend.profile');
 })->name('profile');
