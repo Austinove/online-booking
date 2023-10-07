@@ -241,6 +241,7 @@
     <script src="{{ asset('/assets/js/main.js') }}"></script>
 
     <script>
+
       var events = [
           { Date: new Date(2023, 10, 1), Title: "Doctor appointment at 3:25pm." },
           {

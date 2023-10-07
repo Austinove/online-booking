@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonalInfoController;
+use App\Http\Controllers\ResidenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +27,9 @@ Route::get('/faq', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-Route::get('/form', function () {
-    return view('form');
-})->name('forms');
+Route::get('/form', [PersonalInfoController::class, "index"])->name('forms');
+Route::post('/personal_info', [PersonalInfoController::class, "store"])->name('personal_info');
+Route::post('/residence', [ResidenceController::class, "store"])->name('residence');
 Route::get('/resume', function () {
     return view('resume');
 })->name('resume');

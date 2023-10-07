@@ -1,6 +1,36 @@
 @extends('layouts.layout')
 
 @section('layout-content')
+<!-- <script>
+	window.onbeforeunload = function() {
+	return "Take note of the Unique CodeData";
+	};
+</script> -->
+@if(session('token'))
+<div class="modal fade" data-bs-backdrop="static" id="verticalycentered" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title">Caution!</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<div class="alert alert-info" role="alert">
+				<h4 class="alert-heading"><strong>Please Note!</strong></h4>
+				<h2>Code: <strong>{{ session('token') }}</strong></h2>
+				<hr>
+				<p class="mb-0">Please take note of the <strong>Unique Code</strong>, you will use it to resume application</p>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
+				Noted <i class="bi bi-check-circle"></i>
+			</button>
+		</div>
+		</div>
+	</div>
+</div>
+@endif
 <section class="mt-4">
 	<div class="container">
 		<div class="row">
@@ -8,59 +38,123 @@
 				<!-- Page Title -->
 				<h2>Registration Forms</h2>
 				<!-- Page Description -->
-				<h5 class="mt-5"><strong>Plesse Note:</strong></h5>
-				<p>As you are registering, the system will provide you with a <strong>Unigue Code</strong> that you will use to resume your registration process</p>
+				<div class="row">
+					<div class="col-md-8">
+						<h5 class="mt-5"><strong>Plesse Note:</strong></h5>
+						<p>As you are registering, the system will provide you with a <strong>Unigue Code</strong> that you will use to resume your registration process</p>
+					</div>
+					@if(session('token'))
+					<div class="col-md-4">
+						<div class="alert alert-info" role="alert">
+							<h4 class="alert-heading"><strong>Please Note!</strong></h4>
+							<h2><strong>{{ session('token') }}</strong></h2>
+							<hr>
+							<p class="mb-0">Please take note of the <strong>Unique Code</strong>, you will use it to resume application</p>
+						</div>
+					</div>
+					@endif
+				</div>
 				<hr/>
+				@if(session('message'))
+				<div class="alert alert-{{ session('status') }} alert-dismissible fade show" role="alert">
+					<strong>{{ session('message') }}</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+                @endif
 			</div>
 		</div>
 	</div>
 </section>
 <section class="my-2 address">
-	<div class="container">
+	<div class="container mb-5">
 		<div class="row">
 			<div class="d-flex col-md-10 align-items-start mx-auto">
 				<div class="nav flex-column nav-pills align-items-start mt-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					@if(session('step') == 1 || !session('step'))
 					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-parta-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta" type="button" role="tab" aria-controls="v-pills-parta" aria-selected="true">
 						PART A (Personal Information)
 					</button>
-					<button style="width: 300px" class="nav-link my-2 text-start align-items-start" id="v-pills-parta_place-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta_place" type="button" role="tab" aria-controls="v-pills-parta_place" aria-selected="false">
+					@else
+					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-parta-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta" type="button" role="tab" aria-controls="v-pills-parta" aria-selected="true">
+						PART A (Personal Information)
+					</button>
+					@endif
+					@if(session('step') == 2)
+					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-parta_place-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta_place" type="button" role="tab" aria-controls="v-pills-parta_place" aria-selected="false">
 						PART A (Place of Residence/birth/Origin)
 					</button>
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partb-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partb" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
+					@else
+					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-parta_place-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta_place" type="button" role="tab" aria-controls="v-pills-parta_place" aria-selected="false">
+						PART A (Place of Residence/birth/Origin)
+					</button>
+					@endif
+					@if(session('step') == 3)
+					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-partb-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partb" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
 						PART B (For Adults)
 					</button>
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
+					@else
+					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partb-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partb" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
+						PART B (For Adults)
+					</button>
+					@endif
+					@if(session('step') == 4)
+					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
 						PART C (Father's Details)
 					</button>
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
+					@else
+					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
+						PART C (Father's Details)
+					</button>
+					@endif
+					@if(session('step') == 5)
+					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
 						PART C (Mother's Details)
 					</button>
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcg" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
+					@else
+					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
+						PART C (Mother's Details)
+					</button>
+					@endif
+					@if(session('step') == 6)
+					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-partcg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcg" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
 						PART C (Guardian's Details)
 					</button>
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
+					@else
+					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcg" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
+						PART C (Guardian's Details)
+					</button>
+					@endif
+					@if(session('step') == 7)
+					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
 						CONFIRM INFORMATION
 					</button>
+					@else
+					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
+						CONFIRM INFORMATION
+					</button>
+					@endif
 				</div>
 				<div class="tab-content" id="v-pills-tabContent">
 
 
 
 
-
-
-
+					@if(session('step') == 1 || !session('step'))
 					<div class="tab-pane fade show active row" id="v-pills-parta" role="tabpanel" aria-labelledby="v-pills-parta-tab" tabindex="0">
 						<div class="col-sm-10 m-auto text-center my-4">
 							<h2>PART A</h2>
 						</div>
 						<div class="col-10 mx-auto">
-							<form action="">
+							<form method="POST" action="{{ route('personal_info') }}" enctype="multipart/form-data">
+								@csrf
 								<div class="row">
 									<div class="col-md-10 mb-2">
 										<strong>Personal Information</strong>
 									</div>
 									<hr />
+									@if(session('person_id'))
+									<input class="form-control main" type="hiden" name="personal_id" value="{{ session('person_id') }}">
+									@endif
 									<div class="col-md-6 mb-2">
 										<label for="surname" class="form-label">Surname <small class="text-danger">*</small></label>
 										<input class="form-control main" type="text" name="surname" placeholder="Surname" required>
@@ -135,7 +229,12 @@
 											LCI Letter 
 											<small class="text-primary">(.pdf, .doc .docx)</small>
 											<small class="text-danger">*</small></label>
-										<input class="form-control main" name="lc_letter" type="file" placeholder="LCI Letter" accept="application/msword, application/pdf" required>
+										<input class="form-control main @error('lc_letter') is-invalid @enderror" name="lc_letter"  type="file" placeholder="LCI Letter" accept="application/msword, application/pdf" required>
+										@error('lc_letter')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="diso_letter" class="form-label">
@@ -144,9 +243,6 @@
 											<small class="text-danger">*</small></label>
 										</label>
 										<input class="form-control main" name="diso_letter" type="file" placeholder="DISO Letter" accept="application/msword, application/pdf" required>
-									</div>
-									<div class="col-md-10 mb-2">
-										<span>Others</span>
 									</div>
 									<hr />
 									<div class="col-md-12 d-flex mt-2">
@@ -157,25 +253,29 @@
 							</form>
 						</div>
 					</div>
-
-
-
-
-
-
-
 					
-					<div class="tab-pane fade" id="v-pills-parta_place" role="tabpanel" aria-labelledby="v-pills-parta_place-tab" tabindex="0">
+
+
+
+
+
+
+					@elseif(session('step') == 2)
+					<div class="tab-pane fade show active" id="v-pills-parta_place" role="tabpanel" aria-labelledby="v-pills-parta_place-tab" tabindex="0">
 						<div class="col-sm-10 m-auto text-center my-4">
 							<h2>PART A</h2>
 						</div>
 						<div class="col-10 mx-auto">
-							<form action="">
+							<form method="POST" action="{{ route('residence') }}" enctype="multipart/form-data">
+								@csrf
 								<div class="row">
 									<div class="col-md-10 mb-2">
 										<strong>Place of Residence</strong>
 									</div>
 									<hr />
+									@if(session('person_id'))
+									<input class="form-control main" type="hiden" name="personal_id" value="{{ session('person_id') }}">
+									@endif
 									<div class="col-md-6 mb-2">
 										<label for="residence_type" class="form-label">Residence Type<small class="text-danger">*</small></label>
 										<select class="form-select form-select-lg" name="residence_type" aria-label="Default select example">
@@ -350,7 +450,6 @@
 											Next Form <i class="ti-arrow-right"></i>
 										</button>
 									</div>
-									
 								</div>
 							</form>
 						</div>
@@ -363,8 +462,8 @@
 
 
 
-
-					<div class="tab-pane fade" id="v-pills-partb" role="tabpanel" aria-labelledby="v-pills-partb-tab" tabindex="0">
+					@elseif(session('step') == 3)
+					<div class="tab-pane fade show active" id="v-pills-partb" role="tabpanel" aria-labelledby="v-pills-partb-tab" tabindex="0">
 						<div class="col-sm-10 m-auto text-center my-4">
 							<h1>PART B</h1>
 						</div>
@@ -463,8 +562,8 @@
 
 
 
-					
-					<div class="tab-pane fade" id="v-pills-partcf" role="tabpanel" aria-labelledby="v-pills-partcf-tab" tabindex="0">
+					@elseif(session('step') == 4)
+					<div class="tab-pane fade show active" id="v-pills-partcf" role="tabpanel" aria-labelledby="v-pills-partcf-tab" tabindex="0">
 						<div class="col-sm-10 m-auto text-center my-4">
 							<h1>PART C </h1>
 						</div>
@@ -616,8 +715,8 @@
 
 
 
-
-					<div class="tab-pane fade" id="v-pills-partcm" role="tabpanel" aria-labelledby="v-pills-partcm-tab" tabindex="0">
+					@elseif(session('step') == 5)
+					<div class="tab-pane fade show active" id="v-pills-partcm" role="tabpanel" aria-labelledby="v-pills-partcm-tab" tabindex="0">
 						<div class="col-sm-10 m-auto text-center my-4">
 							<h1>PART C </h1>
 						</div>
@@ -773,8 +872,8 @@
 
 
 
-
-					<div class="tab-pane fade" id="v-pills-partcg" role="tabpanel" aria-labelledby="v-pills-partcg-tab" tabindex="0">
+					@elseif(session('step') == 6)
+					<div class="tab-pane fade show active" id="v-pills-partcg" role="tabpanel" aria-labelledby="v-pills-partcg-tab" tabindex="0">
 						<div class="col-sm-10 m-auto text-center my-4">
 							<h1>PART C </h1>
 						</div>
@@ -887,18 +986,8 @@
 
 
 
-
-					<!-- <div class="tab-pane fade" id="v-pills-partd" role="tabpanel" aria-labelledby="v-pills-partd-tab" tabindex="0">
-						<div class="col-sm-10 m-auto text-center my-4">
-							<h1>PART D </h1>
-						</div>
-					</div> -->
-
-
-
-
-
-					<div class="tab-pane fade" id="v-pills-confirm" role="tabpanel" aria-labelledby="v-pills-confirm-tab" tabindex="0">
+					@elseif(session('step') == 7)
+					<div class="tab-pane fade show active" id="v-pills-confirm" role="tabpanel" aria-labelledby="v-pills-confirm-tab" tabindex="0">
 						<div class="col-sm-10 m-auto text-center my-4">
 							<h1>Confirm Your Information </h1>
 						</div>
@@ -1073,6 +1162,7 @@
 							</form>
 						</div>
 					</div>
+					@endif
 				</div>
 			</div>
 		</div>
