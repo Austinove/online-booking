@@ -43,7 +43,7 @@
                   <button class="nav-link w-100" id="guardian" data-bs-toggle="tab" data-bs-target="#bordered-justified-guardian" type="button" role="tab" aria-controls="guardian" aria-selected="false">Guardian Details</button>
                 </li>
                 <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100" id="officials" data-bs-toggle="tab" data-bs-target="#bordered-justified-officials" type="button" role="tab" aria-controls="officials" aria-selected="false">Official Forms</button>
+                  <button class="nav-link w-100" id="officials" data-bs-toggle="tab" data-bs-target="#bordered-justified-officials" type="button" role="tab" aria-controls="officials" aria-selected="false">Documents</button>
                 </li>
               </ul>
               <div class="tab-content pt-2" id="borderedTabJustifiedContent">
