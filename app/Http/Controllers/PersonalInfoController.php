@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
+// namespace App\Http\Controllers\Auth;
 
 class PersonalInfoController extends Controller
 {
@@ -15,11 +16,16 @@ class PersonalInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function view_profile()
     {
-        return view('forms.first_form');
-        
+        return view('backend.profile');
     }
+
+    // public function index()
+    // {
+    //     return view('forms.first_form')->with('user',);
+        
+    // }
 
     public function form1_edit($token, $id){
         $personal_info = PersonalInfo::where([

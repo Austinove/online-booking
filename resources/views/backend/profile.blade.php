@@ -10,7 +10,7 @@
         </ol>
       </nav>
     </div>
-    <section class="section profile">
+    <section class="section profile" style="margin-bottom: 13rem;">
       <div class="row d-flex">
         <!-- <div class="col-xl-4">
 
@@ -50,12 +50,12 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                    <div class="col-lg-9 col-md-8">{{auth()->user()->name}}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">{{auth()->user()->email}}</div>
                   </div>
 
                 </div>
@@ -78,7 +78,7 @@
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                        <input name="fullName" type="text" value="{{auth()->user()->name}}" class="form-control" id="fullName" value="Kevin Anderson">
                       </div>
                     </div>
 
@@ -92,7 +92,7 @@
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                        <input name="email" type="email" class="form-control" value="{{auth()->user()->email}}" id="Email" value="k.anderson@example.com">
                       </div>
                     </div>
 

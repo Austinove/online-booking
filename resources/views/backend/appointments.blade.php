@@ -33,7 +33,7 @@
                                 <td>Brandon Jacob</td>
                                 <td>Kampala|Nakawa|Mutungo</td>
                                 <td>28</td>
-                                <td>2016-05-25</td>
+                                <td>2023-05-25</td>
                                 <td>
                                     <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="{{ route('applicant', ['id' => 1]) }}" role="button">More...</a>
                                 </td>
@@ -42,7 +42,7 @@
                                 <td>Bridie Kessler</td>
                                 <td>Mukono|Central|Ward</td>
                                 <td>35</td>
-                                <td>2014-12-05</td>
+                                <td>2023-12-05</td>
                                 <td>
                                     <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
                                 </td>
@@ -51,7 +51,7 @@
                                 <td>Ashleigh Langosh</td>
                                 <td>Kampala|Kawempe|Karwere</td>
                                 <td>45</td>
-                                <td>2011-08-12</td>
+                                <td>2023-08-12</td>
                                 <td>
                                     <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
                                 </td>
@@ -60,7 +60,7 @@
                                 <td>Bridie Kessler</td>
                                 <td>Mukono|Central|Ward</td>
                                 <td>35</td>
-                                <td>2014-12-05</td>
+                                <td>2023-12-05</td>
                                 <td>
                                     <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
                                 </td>
@@ -69,7 +69,7 @@
                                 <td>Ashleigh Langosh</td>
                                 <td>Kampala|Kawempe|Karwere</td>
                                 <td>45</td>
-                                <td>2011-08-12</td>
+                                <td>2023-08-12</td>
                                 <td>
                                     <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
                                 </td>
@@ -78,7 +78,7 @@
                                 <td>Bridie Kessler</td>
                                 <td>Mukono|Central|Ward</td>
                                 <td>35</td>
-                                <td>2014-12-05</td>
+                                <td>2023-12-05</td>
                                 <td>
                                     <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
                                 </td>
@@ -87,7 +87,7 @@
                                 <td>Ashleigh Langosh</td>
                                 <td>Kampala|Kawempe|Karwere</td>
                                 <td>45</td>
-                                <td>2011-08-12</td>
+                                <td>2023-08-12</td>
                                 <td>
                                     <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
                                 </td>
