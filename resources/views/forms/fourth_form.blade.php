@@ -73,42 +73,18 @@ print_r(data)
 		<div class="row">
 			<div class="d-flex col-md-10 align-items-start mx-auto">
 				<div class="nav flex-column nav-pills align-items-start mt-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					@if(session('step') == 1 || !session('step'))
-					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-parta-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta" type="button" role="tab" aria-controls="v-pills-parta" aria-selected="true">
+					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-parta-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta" type="button" role="tab" aria-controls="v-pills-parta" aria-selected="true">
 						PART A (Personal Information)
 					</button>
-					@else
-					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-parta-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta" type="button" role="tab" aria-controls="v-pills-parta" aria-selected="true">
-						PART A (Personal Information)
-					</button>
-					@endif
-					@if(session('step') == 2)
-					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-parta_place-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta_place" type="button" role="tab" aria-controls="v-pills-parta_place" aria-selected="false">
+					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-parta_place-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta_place" type="button" role="tab" aria-controls="v-pills-parta_place" aria-selected="false">
 						PART A (Place of Residence/birth/Origin)
 					</button>
-					@else
-					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-parta_place-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta_place" type="button" role="tab" aria-controls="v-pills-parta_place" aria-selected="false">
-						PART A (Place of Residence/birth/Origin)
-					</button>
-					@endif
-					@if(session('step') == 3)
-					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-partb-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partb" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
+					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partb-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partb" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
 						PART B (For Adults)
 					</button>
-					@else
-					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partb-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partb" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
-						PART B (For Adults)
-					</button>
-					@endif
-					@if(session('step') == 4)
 					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
 						PART C (Father's Details)
 					</button>
-					@else
-					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
-						PART C (Father's Details)
-					</button>
-					@endif
 					@if(session('step') == 5)
 					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
 						PART C (Mother's Details)

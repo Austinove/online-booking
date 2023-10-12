@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('lc_letter')->nullable();
             $table->string('diso_letter')->nullable();
             $table->string('unique_code', 8)->unique();
+            $table->number('step');
             $table->timestamps();
         });
     }

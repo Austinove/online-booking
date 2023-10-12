@@ -17,7 +17,31 @@ class PersonalInfoController extends Controller
      */
     public function index()
     {
-        return view('form');
+        return view('forms.first_form');
+        
+    }
+
+    public function form1_edit($token, $id){
+        $personal_info = PersonalInfo::where([
+            "unique_code" => $token,
+            "id" => $id
+        ]);
+        if($personal_info->count()<1){
+            return redirect()->route("status");
+        }
+        $personal_info = PersonalInfo::find($id);
+        // return redirect()->route('forms', ['token' => $token, 'id' => $id])->with([
+        //     'step1' => true,
+        //     'token' => $token,
+        //     'person_id' => $id,
+        //     'personal_data' => $personal_info
+        // ]);
+        return view('forms.first_form')->with([
+            'step1' => true,
+            'token' => $token,
+            'person_id' => $id,
+            'personal_data' => $personal_info
+        ]);
     }
 
     /**
@@ -51,8 +75,9 @@ class PersonalInfoController extends Controller
         // ]);
 
         //initializing file variables
-        $lc_letter = "";
-        $diso_letter = "";
+        $lc_letter = "1";
+        $diso_letter = "1";
+        $id = "";
         if ($request->file("lc_letter")) {
             $file = $request->file("lc_letter");
             $nameWithExt = $file->getClientOriginalName();
@@ -74,10 +99,11 @@ class PersonalInfoController extends Controller
         $unique_code = $this->generateUniqueCode();
 
         if($request->personal_id){
+            $id = $request->personal_id;
             $personal_info = PersonalInfo::find($request->personal_id);
             //deleting the two files
-            File::delete('applicants/' . $personal_info->lc_letter);
-            File::delete('applicants/' . $personal_info->diso_letter);
+            // File::delete('applicants/' . $personal_info->lc_letter);
+            // File::delete('applicants/' . $personal_info->diso_letter);
 
             //get initial code
             $unique_code = $personal_info->unique_code;
@@ -114,15 +140,29 @@ class PersonalInfoController extends Controller
                 "religion" => $request->religion,
                 "diso_letter" => $diso_letter,
                 "lc_letter" => $lc_letter,
-                "unique_code" => $unique_code
+                "unique_code" => $unique_code,
+                "step" => 1
             ]);
+            $id = $save_info->id;
         }
-        return redirect()->back()->with([
+        return redirect()->route('second_form', ['token' => $unique_code, 'id' => $id]);
+    }
+
+    public function second_form($token, $id){
+        $personal_info = PersonalInfo::where([
+            "unique_code" => $token,
+            "id" => $id
+        ]);
+        if($personal_info->count()<1){
+            return redirect()->route("status");
+        }
+
+        return view('forms.second_form')->with([
             'message' => 'Personal Information Saved Successfully', 
             'status' => 'success',
-            'step' => 2,
-            'token' => $unique_code,
-            'person_id' => $save_info->id,
+            'step1' => true,
+            'token' => $token,
+            'person_id' => $id,
         ]);
     }
 
@@ -140,7 +180,7 @@ class PersonalInfoController extends Controller
         return $code;
     }
 
-    public function return_step_one($id) {
+    public function return_step_one($token, $id) {
         $personal_info = PersonalInfo::find($id);
         return redirect()->back()->with([
             'step' => 1,

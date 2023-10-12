@@ -58,12 +58,12 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('contact') }}">Contact</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a class="nav-link" href="{{ route('login') }}">Login</a>
-				</li>
-				<li class="nav-item">
+				</li> -->
+				<!-- <li class="nav-item">
 					<a class="nav-link" href="{{ route('register') }}">Register</a>
-				</li>
+				</li> -->
 			</ul>
 			</div>
 		</div>
@@ -96,7 +96,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
     <script src="{{ asset('/assets/plugins/google-map/gmap.js') }}"></script>
     <script src="{{ asset('/assets/plugins/script.js') }}"></script>
-    @if(session('token'))
+    @if(!empty($token))
     <script>
     //opening modal on form page
       $(document).ready(function(){
