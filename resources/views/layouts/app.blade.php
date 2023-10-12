@@ -73,8 +73,8 @@
             <li class="notification-item">
               <i class="bi bi-exclamation-circle text-warning"></i>
               <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
+                <h4>New User Registration</h4>
+                <p>A new user, John Doe, has registered on [currrentDate]. Click here to view details and approve thier application.</p>
                 <p>30 min. ago</p>
               </div>
             </li>
@@ -86,8 +86,8 @@
             <li class="notification-item">
               <i class="bi bi-x-circle text-danger"></i>
               <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
+                <h4>Application approved</h4>
+                <p>Application ID [ID Number] has been approved for user Jane Smith. Review the application details here.</p>
                 <p>1 hr. ago</p>
               </div>
             </li>
@@ -99,8 +99,8 @@
             <li class="notification-item">
               <i class="bi bi-check-circle text-success"></i>
               <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
+                <h4>Scheduled Maintenance</h4>
+                <p>Scheduled System Maintenance is planned for [Date] from [Start time] to [End Time]. The system may be temporary unavailabe during this period.</p>
                 <p>2 hrs. ago</p>
               </div>
             </li>
@@ -112,8 +112,8 @@
             <li class="notification-item">
               <i class="bi bi-info-circle text-primary"></i>
               <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
+                <h4>Security Alert</h4>
+                <p>A suspicious login attempt was detected from IP address [IP address]. Please review the security logs for further investigation.</p>
                 <p>4 hrs. ago</p>
               </div>
             </li>
@@ -223,7 +223,7 @@
       &copy; Copyright <strong><span>. Uganda Institute of Information and Communications Technology. All Rights Reserved</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="#">Faith</a>
+      Designed by <a href="#">Group 31</a>
     </div>
   </footer>
     <script src="{{ asset('/assets/plugins/jquery/jquery.min.js') }}"></script>
