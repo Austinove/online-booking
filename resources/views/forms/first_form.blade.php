@@ -41,7 +41,7 @@
 				<div class="row">
 					<div class="col-md-8">
 						<h5 class="mt-5"><strong>Plesse Note:</strong></h5>
-						<p>As you are registering, the system will provide you with a <strong>Unigue Code</strong> that you will use to resume your registration process</p>
+						<p>As you are registering, the system will provide you with a <strong>Unique Code</strong> that you will use to resume your registration process</p>
 					</div>
 					@if(!empty($token))
 					<div class="col-md-4">
@@ -73,7 +73,7 @@
 					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-parta-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta" type="button" role="tab" aria-controls="v-pills-parta" aria-selected="true">
 						PART A (Personal Information)
 					</button>
-					@if(!empty('step1'))
+					@if(!empty($step1))
 					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('second_form', ['token' => $token,'id' => $person_id]) }}"  id="v-pills-parta_place-tab" type="button" role="tab" aria-controls="v-pills-parta_place" aria-selected="false">
 						PART A (Place of Residence/birth/Origin)
 					</a>

@@ -41,7 +41,7 @@
 				<div class="row">
 					<div class="col-md-8">
 						<h5 class="mt-5"><strong>Plesse Note:</strong></h5>
-						<p>As you are registering, the system will provide you with a <strong>Unigue Code</strong> that you will use to resume your registration process</p>
+						<p>As you are registering, the system will provide you with a <strong>Unique Code</strong> that you will use to resume your registration process</p>
 					</div>
 					@if(!empty($token))
 					<div class="col-md-4">
@@ -56,7 +56,7 @@
 				</div>
 				<hr/>
 				@if(!empty($message))
-				<div class="alert alert-{{ session('status') }} alert-dismissible fade show" role="alert">
+				<div class="alert alert-{{ $status }} alert-dismissible fade show" role="alert">
 					<strong>{{ $message }}</strong>
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>

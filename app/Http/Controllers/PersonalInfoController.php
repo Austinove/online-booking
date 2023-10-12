@@ -16,16 +16,16 @@ class PersonalInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function view_profile()
-    {
-        return view('backend.profile');
-    }
-
-    // public function index()
+    // public function view_profile()
     // {
-    //     return view('forms.first_form')->with('user',);
-        
+    //     return view('backend.profile');
     // }
+
+    public function index()
+    {
+        return view('forms.first_form');
+        
+    }
 
     public function form1_edit($token, $id){
         $personal_info = PersonalInfo::where([
