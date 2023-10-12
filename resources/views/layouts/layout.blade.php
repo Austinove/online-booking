@@ -40,7 +40,7 @@
 
 	<nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
 		<div class="container py-1">
-			<a class="navbar-brand" href="index.html"><img src="{{ asset('/assets/images/logo.png')}}" alt="logo" style="height: 55px;"></a>
+			<a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('/assets/images/logo.png')}}" alt="logo" style="height: 55px;"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="ti-menu"></span>
 			</button>
@@ -58,12 +58,12 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('contact') }}">Contact</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a class="nav-link" href="{{ route('login') }}">Login</a>
-				</li>
-				<li class="nav-item">
+				</li> -->
+				<!-- <li class="nav-item">
 					<a class="nav-link" href="{{ route('register') }}">Register</a>
-				</li>
+				</li> -->
 			</ul>
 			</div>
 		</div>
@@ -96,5 +96,13 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
     <script src="{{ asset('/assets/plugins/google-map/gmap.js') }}"></script>
     <script src="{{ asset('/assets/plugins/script.js') }}"></script>
+    @if(!empty($token))
+    <script>
+    //opening modal on form page
+      $(document).ready(function(){
+        $('#verticalycentered').modal('show'); 
+    });
+    </script>
+    @endif
 </body>
 </html>
