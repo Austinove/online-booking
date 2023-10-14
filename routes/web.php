@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\ResidenceController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\ResidenceController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/logout', [LoginController::class, "logout"])->name('user_logout');
 Route::get('/instructions', function () {
     return view('instructions');
 })->name('instructions');
@@ -27,17 +29,25 @@ Route::get('/faq', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+//personal details routes
 Route::get('/form', [PersonalInfoController::class, "index"])->name('forms');
 Route::get('/second_form/{token}/{id}', [PersonalInfoController::class, "second_form"])->name('second_form');
 Route::post('/personal_info', [PersonalInfoController::class, "store"])->name('personal_info');
 Route::get('/return_step1/{token}/{id}', [PersonalInfoController::class, "form1_edit"])->name('return_step1');
+Route::get('/return_step2/{token}/{id}', [PersonalInfoController::class, "form2_edit"])->name('return_step2');
+Route::post('/resume_status', [PersonalInfoController::class, "resume_status"])->name('resume_status');
+
+//residence routes
 Route::post('/residence', [ResidenceController::class, "store"])->name('residence');
+Route::get('/third_form/{token}/{id}', [ResidenceController::class, "third_form"])->name('third_form');
 Route::get('/resume', function () {
     return view('resume');
 })->name('resume');
 Route::get('/status', function () {
     return view('status');
 })->name('status');
+
 Route::get('/new-appointments', function () {
     return view('backend.new_appointments');
 })->name('new_appointments');

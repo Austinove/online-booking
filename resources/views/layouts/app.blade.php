@@ -126,7 +126,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item dropdown pe-3">
+        <li class="nav-item dropdown pe-3 me-5">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{auth()->user()->name}}</span>
@@ -151,10 +151,15 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
+              <!-- <form method="POST" action="{{ route('logout') }}">
+                  <input type="hidden" name="_token" value="...">
+                  @csrf -->
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Sign Out</span>
+                  </a>
+              <!-- </form> -->
+              
             </li>
 
           </ul>

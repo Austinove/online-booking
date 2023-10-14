@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\PersonalInfo;
+use App\Models\Residence;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
+use App\Models\OriginPlace;
+use App\Models\BirthPlace;
 // namespace App\Http\Controllers\Auth;
 
 class PersonalInfoController extends Controller
@@ -16,16 +19,57 @@ class PersonalInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function view_profile()
-    {
-        return view('backend.profile');
+
+    public function index() {
+        return view('forms.first_form');
     }
 
-    // public function index()
-    // {
-    //     return view('forms.first_form')->with('user',);
-        
-    // }
+    public function resume_status(Request $request){
+        $personal_info = PersonalInfo::where("unique_code", $request->token)->first();
+        if($personal_info == ""){
+            return redirect()->back()->with([
+                'message' => 'Wrong Token Entered, Please try again'
+            ]);
+        }
+
+        switch ($personal_info->step) {
+            case 1:
+                return redirect()->route('second_form', [
+                    'token' => $personal_info->unique_code, 
+                    'id' => $personal_info->id
+                ])->with([
+                    'step2' => true,
+                    'step3' => true,
+                    'token' => $token,
+                    'person_id' => $id,
+                    'data' => $info
+                ]);;
+                break;
+            
+            case 2:
+                // return redirect()->route('second_form', [
+                //     'token' => $personal_info->unique_code, 
+                //     'id' => $personal_info->id
+                // ]);
+                break;
+            
+            case 3:
+                # code...
+                break;
+            
+            case 4:
+                # code...
+                break;
+            
+            case 5:
+                # code...
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
 
     public function form1_edit($token, $id){
         $personal_info = PersonalInfo::where([
@@ -36,17 +80,34 @@ class PersonalInfoController extends Controller
             return redirect()->route("status");
         }
         $personal_info = PersonalInfo::find($id);
-        // return redirect()->route('forms', ['token' => $token, 'id' => $id])->with([
-        //     'step1' => true,
-        //     'token' => $token,
-        //     'person_id' => $id,
-        //     'personal_data' => $personal_info
-        // ]);
         return view('forms.first_form')->with([
             'step1' => true,
+            'step2' => true,
+            'step3' => true,
             'token' => $token,
             'person_id' => $id,
             'personal_data' => $personal_info
+        ]);
+    }
+    public function form2_edit($token, $id){
+        $personal_info = PersonalInfo::where([
+            "unique_code" => $token,
+            "id" => $id
+        ]);
+        if($personal_info->count()<1){
+            return redirect()->route("status");
+        }
+        $info = Residence::where("person_id", $id)->first();
+        $origin = OriginPlace::where("person_id", $id)->first();
+        $birth = BirthPlace::where("person_id", $id)->first();
+        return view('forms.second_form')->with([
+            'step2' => true,
+            'step3' => true,
+            'token' => $token,
+            'person_id' => $id,
+            'data' => $info,
+            'origin' => $origin,
+            'birth' => $birth
         ]);
     }
 
@@ -81,8 +142,8 @@ class PersonalInfoController extends Controller
         // ]);
 
         //initializing file variables
-        $lc_letter = "1";
-        $diso_letter = "1";
+        $lc_letter = "";
+        $diso_letter = "";
         $id = "";
         if ($request->file("lc_letter")) {
             $file = $request->file("lc_letter");
@@ -162,13 +223,18 @@ class PersonalInfoController extends Controller
         if($personal_info->count()<1){
             return redirect()->route("status");
         }
-
+        $info = Residence::where("person_id", $id)->first();
+        $origin = OriginPlace::where("person_id", $id)->first();
+        $birth = BirthPlace::where("person_id", $id)->first();
         return view('forms.second_form')->with([
             'message' => 'Personal Information Saved Successfully', 
             'status' => 'success',
             'step1' => true,
             'token' => $token,
             'person_id' => $id,
+            'data' => $info,
+            'origin' => $origin,
+            'birth' => $birth,
         ]);
     }
 

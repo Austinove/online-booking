@@ -70,6 +70,31 @@
 	</nav>
 
     <main>
+         @if(!empty($token))
+        <div class="modal fade" data-bs-backdrop="static" id="verticalycentered" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Caution!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading"><strong>Please Note!</strong></h4>
+                        <h2>Code: <strong>{{$token}}</strong></h2>
+                        <hr>
+                        <p class="mb-0">Please take note of the <strong>Unique Code</strong>, you will use it to resume application</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
+                        Noted <i class="bi bi-check-circle"></i>
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+        @endif
         @yield('layout-content')
     </main>
     

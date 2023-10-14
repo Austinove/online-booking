@@ -294,7 +294,7 @@
                       },
                       data: [{
                           value: 1048,
-                          name: 'Adulr'
+                          name: 'Adult'
                         },
                         {
                           value: 735,
