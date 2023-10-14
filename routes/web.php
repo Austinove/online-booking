@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\ResidenceController;
+use App\Http\Controllers\SpouseController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\FatherController;
+use App\Http\Controllers\MotherController;
+use App\Http\Controllers\GuardianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +45,23 @@ Route::post('/resume_status', [PersonalInfoController::class, "resume_status"])-
 //residence routes
 Route::post('/residence', [ResidenceController::class, "store"])->name('residence');
 Route::get('/third_form/{token}/{id}', [ResidenceController::class, "third_form"])->name('third_form');
+
+//spause routes
+Route::post('/spouse', [SpouseController::class, "store"])->name('spouse');
+Route::get('/fourth_form/{token}/{id}', [SpouseController::class, "fourth_form"])->name('fourth_form');
+
+//father routes
+Route::post('/father', [FatherController::class, "store"])->name('father');
+Route::get('/fifth_form/{token}/{id}', [FatherController::class, "fifth_form"])->name('fifth_form');
+
+//mother routes
+Route::post('/mother', [MotherController::class, "store"])->name('mother');
+Route::get('/sixth_form/{token}/{id}', [MotherController::class, "sixth_form"])->name('sixth_form');
+
+//guardian routes
+Route::post('/guardian', [GuardianController::class, "store"])->name('guardian');
+Route::get('/seventh_form/{token}/{id}', [GuardianController::class, "seventh_form"])->name('seventh_form');
+
 Route::get('/resume', function () {
     return view('resume');
 })->name('resume');

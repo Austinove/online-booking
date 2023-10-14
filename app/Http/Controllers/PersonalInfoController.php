@@ -24,6 +24,75 @@ class PersonalInfoController extends Controller
         return view('forms.first_form');
     }
 
+    public function check_step($id){
+        $personal_info = PersonalInfo::find($id);
+        if($personal_info == ""){
+            return false;
+        }
+
+        switch ($personal_info->step) {
+            case 1:
+                return [
+                    'step1' => true,
+                    'step2' => true
+                ];
+                break;
+            
+            case 2:
+                return [
+                    'step1' => true,
+                    'step2' => true,
+                    'step3' => true
+                ];
+                break;
+            
+            case 3:
+                return [
+                    'step1' => true,
+                    'step2' => true,
+                    'step3' => true,
+                    'step4' => true
+                ];
+                break;
+            
+            case 4:
+                return [
+                    'step1' => true,
+                    'step2' => true,
+                    'step3' => true,
+                    'step4' => true,
+                    'step5' => true
+                ];
+                break;
+            
+            case 5:
+                return [
+                    'step1' => true,
+                    'step2' => true,
+                    'step3' => true,
+                    'step4' => true,
+                    'step5' => true,
+                    'step6' => true
+                ];
+                break;
+            case 6:
+                return [
+                    'step1' => true,
+                    'step2' => true,
+                    'step3' => true,
+                    'step4' => true,
+                    'step5' => true,
+                    'step6' => true,
+                    'step7' => true
+                ];
+                break;
+            
+            default:
+                return false;
+                break;
+        }
+    }
+
     public function resume_status(Request $request){
         $personal_info = PersonalInfo::where("unique_code", $request->token)->first();
         if($personal_info == ""){
@@ -43,14 +112,20 @@ class PersonalInfoController extends Controller
                     'token' => $token,
                     'person_id' => $id,
                     'data' => $info
-                ]);;
+                ]);
                 break;
             
             case 2:
-                // return redirect()->route('second_form', [
-                //     'token' => $personal_info->unique_code, 
-                //     'id' => $personal_info->id
-                // ]);
+                return redirect()->route('third_form', [
+                    'token' => $personal_info->unique_code, 
+                    'id' => $personal_info->id
+                ])->with([
+                    'step2' => true,
+                    'step3' => true,
+                    'token' => $token,
+                    'person_id' => $id,
+                    'data' => $info
+                ]);
                 break;
             
             case 3:
@@ -80,14 +155,17 @@ class PersonalInfoController extends Controller
             return redirect()->route("status");
         }
         $personal_info = PersonalInfo::find($id);
-        return view('forms.first_form')->with([
-            'step1' => true,
-            'step2' => true,
-            'step3' => true,
+        $return_data = [
             'token' => $token,
             'person_id' => $id,
             'personal_data' => $personal_info
-        ]);
+        ];
+        //assigning current steps completed
+        $steps = $this->check_step($id);
+        foreach ($steps as $key => $value) {
+            $return_data[$key] = true;
+        }
+        return view('forms.first_form')->with($return_data);
     }
     public function form2_edit($token, $id){
         $personal_info = PersonalInfo::where([
@@ -100,15 +178,19 @@ class PersonalInfoController extends Controller
         $info = Residence::where("person_id", $id)->first();
         $origin = OriginPlace::where("person_id", $id)->first();
         $birth = BirthPlace::where("person_id", $id)->first();
-        return view('forms.second_form')->with([
-            'step2' => true,
-            'step3' => true,
+        $return_data = [
             'token' => $token,
             'person_id' => $id,
             'data' => $info,
             'origin' => $origin,
             'birth' => $birth
-        ]);
+        ];
+        //assigning current steps completed
+        $steps = $this->check_step($id);
+        foreach ($steps as $key => $value) {
+            $return_data[$key] = true;
+        }
+        return view('forms.second_form')->with($return_data);
     }
 
     /**
@@ -229,7 +311,8 @@ class PersonalInfoController extends Controller
         return view('forms.second_form')->with([
             'message' => 'Personal Information Saved Successfully', 
             'status' => 'success',
-            'step1' => true,
+            'step2' => true,
+            'step3' => true,
             'token' => $token,
             'person_id' => $id,
             'data' => $info,

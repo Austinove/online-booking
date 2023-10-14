@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\OriginPlace;
 use App\Models\BirthPlace;
 use App\Models\PersonalInfo;
+use App\Models\Spouse;
 
 class ResidenceController extends Controller
 {
@@ -40,10 +41,9 @@ class ResidenceController extends Controller
     {
         $personal_details = PersonalInfo::find($request->personal_id);
         if($request->residence_id){
-            $id = $request->personal_id;
             $residence_info = Residence::find($request->residence_id);
-            $origin = OriginPlace::where("person_id ", $residence_info->personal_id)->first();
-            $birthPlace = BirthPlace::where("person_id ", $residence_info->personal_id)->first();
+            $origin = OriginPlace::where("person_id", $request->personal_id)->first();
+            $birthPlace = BirthPlace::where("person_id", $request->personal_id)->first();
 
             //update residence details
             $residence_info->update([
@@ -150,18 +150,24 @@ class ResidenceController extends Controller
         $personal_info = PersonalInfo::where([
             "unique_code" => $token,
             "id" => $id
-        ]);
-        if($personal_info->count()<1){
+        ])->first();
+        if($personal_info == ""){
             return redirect()->route("status");
         }
-
-        return view('forms.third_form')->with([
+        $info = Spouse::where("person_id", $id)->first();
+        $return_data = [
             'message' => 'Details Saved Successfully', 
             'status' => 'success',
-            'step2' => true,
+            'data' => $info,
             'token' => $token,
             'person_id' => $id,
-        ]);
+        ];
+        //assigning current steps completed
+        $steps = app('App\Http\Controllers\PersonalInfoController')->check_step($id);
+        foreach ($steps as $key => $value) {
+            $return_data[$key] = true;
+        }
+        return view('forms.third_form')->with($return_data);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guardian;
+use App\Models\PersonalInfo;
 use Illuminate\Http\Request;
 
 class GuardianController extends Controller
@@ -35,7 +36,80 @@ class GuardianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $personal_details = PersonalInfo::find($request->personal_id);
+        if($request->mother_id){
+            $father_info = Guardian::find($request->mother_id);
+
+            //update details
+            $father_info->update([
+                "surname" => $request->guardian_surname,
+                "given_name" => $request->guardian_givenname,
+                "other_name" => $request->guardian_othername,
+                "passport" => $request->guardian_pasport_no,
+                "nin" => $request->guardian_nin,
+                "citzenship" => $request->guardian_citz,
+                "occupation" => $request->guardian_occupation,
+                "state_nationality" => $request->guardian_dual,
+                "country" => $request->guardian_country,
+                "ditrict" => $request->guardian_district,
+                "county" => $request->guardian_county,
+                "sub_county" => $request->guardian_subcounty,
+                "parish" => $request->guardian_parish,
+                "village" => $request->guardian_village,
+                "street" => $request->guardian_street,
+                "house_no" => $request->guardian_plot,
+            ]);
+        }else{
+            //storing info
+            $save_info = Guardian::create([
+                "person_id" => $request->personal_id,
+                "surname" => $request->guardian_surname,
+                "given_name" => $request->guardian_givenname,
+                "other_name" => $request->guardian_othername,
+                "passport" => $request->guardian_pasport_no,
+                "nin" => $request->guardian_nin,
+                "citzenship" => $request->guardian_citz,
+                "occupation" => $request->guardian_occupation,
+                "state_nationality" => $request->guardian_dual,
+                "country" => $request->guardian_country,
+                "ditrict" => $request->guardian_district,
+                "county" => $request->guardian_county,
+                "sub_county" => $request->guardian_subcounty,
+                "parish" => $request->guardian_parish,
+                "village" => $request->guardian_village,
+                "street" => $request->guardian_street,
+                "house_no" => $request->guardian_plot,
+            ]);
+            //updating statu
+            $personal_details->update([
+                "step" => 6
+            ]);
+        }
+        return redirect()->route('seventh_form', ['token' => $personal_details->unique_code, 'id' => $personal_details->id]);
+    }
+
+    public function seventh_form($token, $id){
+        $personal_info = PersonalInfo::where([
+            "unique_code" => $token,
+            "id" => $id
+        ])->first();
+        if($personal_info == ""){
+            return redirect()->route("status");
+        }
+        $info = Guardian::where("person_id", $id)->first();
+        $return_data = [
+            'message' => 'Details Saved Successfully', 
+            'status' => 'success',
+            'data' => $info,
+            'token' => $token,
+            'person_id' => $id,
+        ];
+        //assigning current steps completed
+        $steps = app('App\Http\Controllers\PersonalInfoController')->check_step($id);
+        foreach ($steps as $key => $value) {
+            $return_data[$key] = true;
+        }
+        return view('forms.seventh_form')->with($return_data);
     }
 
     /**

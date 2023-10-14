@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('ditrict');
             $table->string('county');
-            $table->string('sub-county');
+            $table->string('sub_county');
             $table->string('parish');
             $table->string('village');
             $table->string('street');
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('ocountry');
             $table->string('oditrict');
             $table->string('ocounty');
-            $table->string('osub-county');
+            $table->string('osub_county');
             $table->string('oparish');
             $table->string('ovillage');
             $table->string('ostreet');

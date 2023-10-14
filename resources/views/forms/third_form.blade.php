@@ -54,37 +54,37 @@
 					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-partb-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partb" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
 						PART B (For Adults)
 					</button>
-					@if(!empty($step) && $step==4)
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
+					@if(!empty($step4))
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('fourth_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-partcf-tab" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
 						PART C (Father's Details)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
 						PART C (Father's Details)
 					</button>
 					@endif
-					@if(session('step') == 5)
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
+					@if(!empty($step5))
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('fifth_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-partcm-tab" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
 						PART C (Mother's Details)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
 						PART C (Mother's Details)
 					</button>
 					@endif
-					@if(session('step') == 6)
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcg" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
+					@if(!empty($step6))
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('sixth_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-partcg-tab" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
 						PART C (Guardian's Details)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcg" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
 						PART C (Guardian's Details)
 					</button>
 					@endif
-					@if(session('step') == 7)
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
+					@if(!empty($step7))
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('seventh_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-confirm-tab" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
 						CONFIRM INFORMATION
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
 						CONFIRM INFORMATION
@@ -97,31 +97,38 @@
 							<h1>PART B</h1>
 						</div>
 						<div class="col-10 mx-auto">
-							<form action="">
+							<form method="POST" action="{{ route('spouse') }}">
+								@csrf
 								<div class="row">
 									<div class="col-md-10 mb-2">
 										<strong>Spouse Details</strong>
 									</div>
 									<hr />
+									@if(!empty($person_id))
+									<input class="form-control main" type="hidden" name="personal_id" value="{{ $person_id }}">
+									@endif
+									@if(!empty($data))
+									<input class="form-control main" type="hidden" name="spouse_id" value="{{ $data->id }}">
+									@endif
 									<div class="col-md-6 mb-2">
 										<label for="ssurname" class="form-label">Surname <small class="text-danger">*</small></label>
-										<input class="form-control main" name="ssurname" type="text" placeholder="Surname" required>
+										<input class="form-control main" value='{{!empty($data)? $data->surname : "" }}' name="ssurname" type="text" placeholder="Surname" required>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="sgivenname" class="form-label">Given Name <small class="text-danger">*</small></label>
-										<input class="form-control main" name="sgivenname" type="text" placeholder="Given Name" required>
+										<input class="form-control main" value='{{!empty($data)? $data->given_name : "" }}' name="sgivenname" type="text" placeholder="Given Name" required>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="sothername" class="form-label">Other Name</label>
-										<input class="form-control main" name="sothername" type="text" placeholder="Other Name">
+										<input class="form-control main" value='{{!empty($data)? $data->other_name : "" }}' name="sothername" type="text" placeholder="Other Name">
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="smaidenname" class="form-label">Maiden Name</label>
-										<input class="form-control main" name="smaidenname" type="text" placeholder="Maiden Name">
+										<input class="form-control main" value='{{!empty($data)? $data->maiden_name : "" }}' name="smaidenname" type="text" placeholder="Maiden Name">
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="snin" class="form-label">National ID Number (NIN) </label>
-										<input class="form-control main" name="snin" type="text" placeholder="NIN">
+										<input class="form-control main" value='{{!empty($data)? $data->nin : "" }}' name="snin" type="text" placeholder="NIN">
 									</div>
 									<div class="col-md-10 mb-2">
 										<span>Citzenship Type</span>
@@ -130,30 +137,38 @@
 									<div class="col-md-6 mb-2">
 										<label for="ssitz" class="form-label">Citzenship<small class="text-danger">*</small></label>
 										<select class="form-select form-select-lg" name="ssitz" aria-label="Default select example" required>
+											@if(!empty($data))
+											<option selected value="{{$data->citzenship}}">{{$data->citzenship}}</option>
+											@else
 											<option selected>Select Citzenship</option>
-											<option value="by_birth">By Birth</option>
-											<option value="by_registration">By Registration</option>
-											<option value="by_naturalization">By Naturalization</option>
-											<option value="dual_citzenship">Dual Citzenship</option>
-											<option value="before_1995">Citzenship before 1995</option>
+											@endif
+											<option value="By Birth">By Birth</option>
+											<option value="By Registration">By Registration</option>
+											<option value="By Naturalization">By Naturalization</option>
+											<option value="Dual Citzenship">Dual Citzenship</option>
+											<option value=">Citzenship before 1995">Citzenship before 1995</option>
 										</select>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="sdual" class="form-label">State Citzenship and Country <small>(If Dual Citzenship)</small></label>
-										<input class="form-control main" name="sdual" type="text" placeholder="Enter Citzenship/Country">
+										<input class="form-control main" name="sdual" value='{{!empty($data)? $data->state_nationality : "" }}' type="text" placeholder="Enter Citzenship/Country">
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="smariage_place" class="form-label">Place of Marriage <small class="text-danger">*</small></label>
-										<input class="form-control main" name="smariage_place" type="text" placeholder="Place of Marriage" required>
+										<input class="form-control main" value='{{!empty($data)? $data->marriage_place : "" }}' name="smariage_place" type="text" placeholder="Place of Marriage" required>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="dom" class="form-label">Date of Marriage <small class="text-danger">*</small></label>
-										<input class="form-control main" name="dom" max="<?php echo date('Y-m-d') ?>" type="date" placeholder="Date of Mariage" required>
+										<input class="form-control main" value='{{!empty($data)? $data->dom : "" }}' name="dom" max="<?php echo date('Y-m-d') ?>" type="date" placeholder="Date of Mariage" required>
 									</div>
 									<div class="col-md-6 mb-2">
-										<label for="mariage_type" class="form-label">Type of Marriage<small class="text-danger">*</small></label>
+										<label for="mariage_type" class="form-label">Type of Marriage <small class="text-danger">*</small></label>
 										<select class="form-select form-select-lg" name="mariage_type" aria-label="Default select example" required>
+											@if(!empty($data))
+											<option selected value="{{$data->marriage_type}}">{{$data->marriage_type}}</option>
+											@else
 											<option selected disabled>Select Type</option>
+											@endif
 											<option value="Civil">Civil</option>
 											<option value="Religious">Religious</option>
 											<option value="Cultural">Cultural</option>
@@ -161,17 +176,17 @@
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="mariage_number" class="form-label">Marriage Certificate No.<small class="text-danger">*</small></label>
-										<input class="form-control main" type="text" name="mariage_number" placeholder="Certificate Number">
+										<input class="form-control main" value='{{!empty($data)? $data->marriage_cert : "" }}' type="text" name="mariage_number" placeholder="Certificate Number">
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="other_spouses" class="form-label">Number of Other Spouses<small>(Optional)</small></label>
-										<input class="form-control main" type="number" name="other_spouses" placeholder="Other Spouces Number">
+										<input class="form-control main" value='{{!empty($data)? $data->spouse_number : "" }}' type="number" name="other_spouses" placeholder="Other Spouces Number">
 									</div>
 									<hr />
 									<div class="col-md-12 d-flex mt-2">
-										<button type="submit" class="btn btn-secondary me-auto">
-											<i class="ti-arrow-left"></i> Previous 
-										</button>
+										<a name="" id="" class="btn btn-sm btn-secondary me-auto" href="{{ route('return_step2', ['token' => $token,'id' => $person_id]) }}" role="button"> 
+											<i class="ti-arrow-left"></i> Previous
+										</a>
 										<button type="submit" class="btn btn-primary ms-auto">
 											Next Form <i class="ti-arrow-right"></i>
 										</button>

@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('marriage_cert');
             $table->string('citzenship');
             $table->string('state_nationality')->nullable();
-            $table->integer('spouse_number')->unique()->nullable();
+            $table->integer('spouse_number')->nullable();
             $table->timestamps();
         });
     }

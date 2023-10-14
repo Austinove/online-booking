@@ -61,36 +61,36 @@
 					</button>
 					@endif
 					@if(!empty($step4))
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('fourth_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-partcf-tab" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
 						PART C (Father's Details)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
 						PART C (Father's Details)
 					</button>
 					@endif
 					@if(!empty($step5))
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('fifth_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-partcm-tab" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
 						PART C (Mother's Details)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
 						PART C (Mother's Details)
 					</button>
 					@endif
 					@if(!empty($step6))
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcg" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('sixth_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-partcg-tab" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
 						PART C (Guardian's Details)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcg" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
 						PART C (Guardian's Details)
 					</button>
 					@endif
 					@if(!empty($step7))
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('seventh_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-confirm-tab" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
 						CONFIRM INFORMATION
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
 						CONFIRM INFORMATION
@@ -112,6 +112,9 @@
 									<hr />
 									@if(!empty($person_id))
 									<input class="form-control main" type="hidden" name="personal_id" value="{{ $person_id }}">
+									@endif
+									@if(!empty($data))
+									<input class="form-control main" type="hidden" name="residence_id" value="{{ $data->id }}">
 									@endif
 									<div class="col-md-6 mb-2">
 										<label for="residence_type" class="form-label">Residence Type<small class="text-danger">*</small></label>
@@ -285,7 +288,7 @@
 									<hr />
 									<div class="col-md-12 d-flex mt-2">
 										<a name="" id="" class="btn btn-sm btn-secondary me-auto" href="{{ route('return_step1', ['token' => $token,'id' => $person_id]) }}" role="button"> 
-											<i class="ti-arrow-left"></i> Back
+											<i class="ti-arrow-left"></i> Previous
 										</a>
 										<button type="submit" class="btn btn-sm btn-primary ms-auto">
 											Next Form <i class="ti-arrow-right"></i>
