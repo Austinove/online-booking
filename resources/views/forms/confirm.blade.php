@@ -17,11 +17,7 @@
 			<div class="modal-body">
 				<div class="alert alert-info" role="alert">
 					<h4 class="alert-heading"><strong>Details Submitted Successfully</strong></h4>
-					<br/>
-					<h2>Appointment Date: <strong>{{$appointment}}</strong></h2>
-					<br/>
-					<hr>
-					<p class="mb-0">Please take note of the <strong>Date</strong>, you can find more details on your email/Phone Number</p>
+					<h6 class="mb-0">Please take note of the <strong>Appointment Date</strong>, you can find more details about the appointment in your email/Phone SMS</h6>
 				</div>
 			</div>
 			<div class="modal-footer">

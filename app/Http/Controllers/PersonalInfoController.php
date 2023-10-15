@@ -41,7 +41,7 @@ class PersonalInfoController extends Controller
                 return [
                     'step1' => true,
                     'step2' => true,
-                    'step3' => true
+                    'step3' => true,
                 ];
                 break;
             
@@ -317,7 +317,6 @@ class PersonalInfoController extends Controller
             'message' => 'Personal Information Saved Successfully', 
             'status' => 'success',
             'step2' => true,
-            'step3' => true,
             'token' => $token,
             'person_id' => $id,
             'data' => $info,
