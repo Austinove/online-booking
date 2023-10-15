@@ -6,31 +6,6 @@
 	return "Take note of the Unique CodeData";
 	};
 </script> -->
- @if(!empty($token))
-<div class="modal fade" data-bs-backdrop="static" id="verticalycentered" tabindex="-1">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-		<div class="modal-header">
-			<h5 class="modal-title">Caution!</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		</div>
-		<div class="modal-body">
-			<div class="alert alert-info" role="alert">
-				<h4 class="alert-heading"><strong>Please Note!</strong></h4>
-				<h2>Code: <strong>{{$token}}</strong></h2>
-				<hr>
-				<p class="mb-0">Please take note of the <strong>Unique Code</strong>, you will use it to resume application</p>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
-				Noted <i class="bi bi-check-circle"></i>
-			</button>
-		</div>
-		</div>
-	</div>
-</div>
-@endif
 <section class="mt-4">
 	<div class="container">
 		<div class="row">
@@ -41,7 +16,7 @@
 				<div class="row">
 					<div class="col-md-8">
 						<h5 class="mt-5"><strong>Plesse Note:</strong></h5>
-						<p>As you are registering, the system will provide you with a <strong>Unigue Code</strong> that you will use to resume your registration process</p>
+						<p>As you are registering, the system will provide you with a <strong>Unique Code</strong> that you will use to resume your registration process</p>
 					</div>
 					@if(!empty($token))
 					<div class="col-md-4">
@@ -56,7 +31,7 @@
 				</div>
 				<hr/>
 				@if(!empty($message))
-				<div class="alert alert-{{ session('status') }} alert-dismissible fade show" role="alert">
+				<div class="alert alert-{{ $status }} alert-dismissible fade show" role="alert">
 					<strong>{{ $message }}</strong>
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
@@ -73,8 +48,8 @@
 					<button style="width: 300px" class="nav-link my-2 text-start active" id="v-pills-parta-tab" data-bs-toggle="pill" data-bs-target="#v-pills-parta" type="button" role="tab" aria-controls="v-pills-parta" aria-selected="true">
 						PART A (Personal Information)
 					</button>
-					@if(!empty('step1'))
-					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('second_form', ['token' => $token,'id' => $person_id]) }}"  id="v-pills-parta_place-tab" type="button" role="tab" aria-controls="v-pills-parta_place" aria-selected="false">
+					@if(!empty($step1))
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('return_step2', ['token' => $token,'id' => $person_id]) }}"  id="v-pills-parta_place-tab" type="button" role="tab" aria-controls="v-pills-parta_place" aria-selected="false">
 						PART A (Place of Residence/birth/Origin)
 					</a>
 					@else
@@ -82,46 +57,46 @@
 						PART A (Place of Residence/birth/Origin)
 					</button>
 					@endif
-					@if(session('step3'))
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partb-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partb" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
+					@if(!empty($step3))
+					<a style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partb-tab" href="{{ route('third_form', ['token' => $token,'id' => $person_id]) }}" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
 						PART B (For Adults)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partb-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partb" type="button" role="tab" aria-controls="v-pills-partb" aria-selected="false">
 						PART B (For Adults)
 					</button>
 					@endif
-					@if(session('step4'))
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
+					@if(!empty($step4))
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('fourth_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-partcf-tab" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
 						PART C (Father's Details)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcf" type="button" role="tab" aria-controls="v-pills-partcf" aria-selected="false">
 						PART C (Father's Details)
 					</button>
 					@endif
-					@if(session('step5'))
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
+					@if(!empty($step5))
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('fifth_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-partcm-tab" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
 						PART C (Mother's Details)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcm" type="button" role="tab" aria-controls="v-pills-partcm" aria-selected="false">
 						PART C (Mother's Details)
 					</button>
 					@endif
-					@if(session('step6'))
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-partcg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcg" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
+					@if(!empty($step6))
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('sixth_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-partcg-tab" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
 						PART C (Guardian's Details)
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-partcg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partcg" type="button" role="tab" aria-controls="v-pills-partcg" aria-selected="false">
 						PART C (Guardian's Details)
 					</button>
 					@endif
-					@if(session('step7'))
-					<button style="width: 300px" class="nav-link my-2 text-start" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
+					@if(!empty($step7))
+					<a style="width: 300px" class="nav-link my-2 text-start" href="{{ route('seventh_form', ['token' => $token,'id' => $person_id]) }}" id="v-pills-confirm-tab" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
 						CONFIRM INFORMATION
-					</button>
+					</a>
 					@else
 					<button style="width: 300px" disabled class="nav-link my-2 text-start" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">
 						CONFIRM INFORMATION

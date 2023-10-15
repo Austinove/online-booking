@@ -126,7 +126,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item dropdown pe-3">
+        <li class="nav-item dropdown pe-3 me-5">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{auth()->user()->name}}</span>
@@ -151,7 +151,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('logout_user') }}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -220,9 +220,6 @@
   <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>. Uganda Institute of Information and Communications Technology. All Rights Reserved</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      Designed by <a href="#">Faith</a>
     </div>
   </footer>
     <script src="{{ asset('/assets/plugins/jquery/jquery.min.js') }}"></script>

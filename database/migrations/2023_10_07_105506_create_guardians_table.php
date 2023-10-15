@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('ditrict');
             $table->string('county');
-            $table->string('sub-county');
+            $table->string('sub_county');
             $table->string('parish');
             $table->string('village');
             $table->string('street');

@@ -20,15 +20,13 @@ return new class extends Migration
             $table->string('country');
             $table->string('ditrict');
             $table->string('county');
-            $table->string('sub-county');
+            $table->string('sub_county');
             $table->string('parish');
             $table->string('village');
             $table->string('city');
             $table->string('health_facility');
             $table->integer('birth_weight');
             $table->integer('parity');
-            $table->string('previous_district')->nullable();
-            $table->string('previous_address')->nullable();
             $table->timestamps();
         });
     }
