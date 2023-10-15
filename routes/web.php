@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FatherController;
 use App\Http\Controllers\MotherController;
 use App\Http\Controllers\GuardianController;
+use App\Http\Controllers\OfficialInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,16 @@ use App\Http\Controllers\GuardianController;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-Route::get('/logout', [LoginController::class, "logout"])->name('user_logout');
+Route::get('/logout_user',function(){
+    auth()->logout();
+    Session()->flush();
+    return Redirect::to('/');
+})->name('logout_user');
 Route::get('/instructions', function () {
     return view('instructions');
 })->name('instructions');
@@ -72,28 +79,28 @@ Route::get('/status', function () {
     return view('status');
 })->name('status');
 
-Route::get('/new-appointments', function () {
-    return view('backend.new_appointments');
-})->name('new_appointments');
-Route::get('/appointments', function () {
-    return view('backend.appointments');
-})->name('appointments');
-Route::get('/pending-appointments', function () {
-    return view('backend.pending_appointments');
-})->name('pending_appointments');
 
-Route::get('/unattended-appointments', function () {
-    return view('backend.unattended_appointments');
-})->name('unattended_appointments');
-
-Route::get('/application/{id}', function () {
-    return view('backend.application_details');
-})->name('applicant');
-
-Route::get('/profile', function () {
-    return view('backend.profile');
-})->name('profile');
-
+//backend routes
 Auth::routes();
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/appointments', [OfficialInfoController::class, "appointments"])->name('appointments');
+    Route::get('/new-appointments', function () {
+        return view('backend.new_appointments');
+    })->name('new_appointments');
+    Route::get('/pending-appointments', function () {
+        return view('backend.pending_appointments');
+    })->name('pending_appointments');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/unattended-appointments', function () {
+        return view('backend.unattended_appointments');
+    })->name('unattended_appointments');
+
+    Route::get('/application/{id}', function () {
+        return view('backend.application_details');
+    })->name('applicant');
+
+    Route::get('/profile', function () {
+        return view('backend.profile');
+    })->name('profile');
+});

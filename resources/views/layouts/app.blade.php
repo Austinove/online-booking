@@ -151,15 +151,10 @@
             </li>
 
             <li>
-              <!-- <form method="POST" action="{{ route('logout') }}">
-                  <input type="hidden" name="_token" value="...">
-                  @csrf -->
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Sign Out</span>
-                  </a>
-              <!-- </form> -->
-              
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('logout_user') }}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
             </li>
 
           </ul>
