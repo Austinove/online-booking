@@ -22,7 +22,7 @@ use App\Http\Controllers\GuardianController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 Route::get('/logout', [LoginController::class, "logout"])->name('user_logout');
 Route::get('/instructions', function () {
     return view('instructions');
@@ -61,6 +61,9 @@ Route::get('/sixth_form/{token}/{id}', [MotherController::class, "sixth_form"])-
 //guardian routes
 Route::post('/guardian', [GuardianController::class, "store"])->name('guardian');
 Route::get('/seventh_form/{token}/{id}', [GuardianController::class, "seventh_form"])->name('seventh_form');
+
+//confirmation routes
+Route::post('/confirm', [GuardianController::class, "confirm"])->name('confirm');
 
 Route::get('/resume', function () {
     return view('resume');

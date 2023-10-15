@@ -121,13 +121,22 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
     <script src="{{ asset('/assets/plugins/google-map/gmap.js') }}"></script>
     <script src="{{ asset('/assets/plugins/script.js') }}"></script>
-    @if(!empty($token))
+    @if(!empty($Confrimed))
     <script>
-    //opening modal on form page
-      $(document).ready(function(){
-        $('#verticalycentered').modal('show'); 
-    });
+        //opening modal on form page
+        $(document).ready(function(){
+            $('#confirmed').modal('show'); 
+        });
     </script>
+    @else
+        @if(!empty($token))
+        <script>
+        //opening modal on form page
+        $(document).ready(function(){
+            $('#verticalycentered').modal('show'); 
+        });
+        </script>
+        @endif
     @endif
 </body>
 </html>

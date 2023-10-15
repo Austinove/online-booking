@@ -34,7 +34,6 @@ class PersonalInfoController extends Controller
             case 1:
                 return [
                     'step1' => true,
-                    'step2' => true
                 ];
                 break;
             
@@ -86,6 +85,17 @@ class PersonalInfoController extends Controller
                     'step7' => true
                 ];
                 break;
+            case 0:
+                return [
+                    'step1' => true,
+                    'step2' => true,
+                    'step3' => true,
+                    'step4' => true,
+                    'step5' => true,
+                    'step6' => true,
+                    'step7' => true
+                ];
+                break;
             
             default:
                 return false;
@@ -109,9 +119,8 @@ class PersonalInfoController extends Controller
                 ])->with([
                     'step2' => true,
                     'step3' => true,
-                    'token' => $token,
-                    'person_id' => $id,
-                    'data' => $info
+                    'token' => $request->token,
+                    'person_id' => $personal_info->id,
                 ]);
                 break;
             
@@ -122,9 +131,8 @@ class PersonalInfoController extends Controller
                 ])->with([
                     'step2' => true,
                     'step3' => true,
-                    'token' => $token,
-                    'person_id' => $id,
-                    'data' => $info
+                    'token' => $request->token,
+                    'person_id' => $personal_info->id,
                 ]);
                 break;
             
@@ -250,9 +258,6 @@ class PersonalInfoController extends Controller
         if($request->personal_id){
             $id = $request->personal_id;
             $personal_info = PersonalInfo::find($request->personal_id);
-            //deleting the two files
-            // File::delete('applicants/' . $personal_info->lc_letter);
-            // File::delete('applicants/' . $personal_info->diso_letter);
 
             //get initial code
             $unique_code = $personal_info->unique_code;

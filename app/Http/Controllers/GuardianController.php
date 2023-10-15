@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Guardian;
 use App\Models\PersonalInfo;
+use App\Models\Mother;
+use App\Models\Father;
+use App\Models\Spouse;
+use App\Models\OriginPlace;
+use App\Models\Residence;
+use App\Models\BirthPlace;
 use Illuminate\Http\Request;
 
 class GuardianController extends Controller
@@ -96,11 +102,24 @@ class GuardianController extends Controller
         if($personal_info == ""){
             return redirect()->route("status");
         }
-        $info = Guardian::where("person_id", $id)->first();
+        $guardian_info = Guardian::where("person_id", $id)->first();
+        $mother_info = Mother::where("person_id", $id)->first();
+        $father_info = Father::where("person_id", $id)->first();
+        $spouse_info = Spouse::where("person_id", $id)->first();
+        $origin_info = OriginPlace::where("person_id", $id)->first();
+        $birth_info = BirthPlace::where("person_id", $id)->first();
+        $residence_info = Residence::where("person_id", $id)->first();
         $return_data = [
             'message' => 'Details Saved Successfully', 
             'status' => 'success',
-            'data' => $info,
+            'personal_info' => $personal_info,
+            'guardian_info' => $guardian_info,
+            'mother_info' => $mother_info,
+            'father_info' => $father_info,
+            'spouse_info' => $spouse_info,
+            'origin_info' => $origin_info,
+            'birth_info' => $birth_info,
+            'residence_info' => $residence_info,
             'token' => $token,
             'person_id' => $id,
         ];
@@ -110,6 +129,25 @@ class GuardianController extends Controller
             $return_data[$key] = true;
         }
         return view('forms.seventh_form')->with($return_data);
+    }
+
+    public function confirm(Request $request){
+        $personal_info = PersonalInfo::find($request->personal_id);
+        if($personal_info == ""){
+            return redirect()->route("status");
+        }
+
+        //updating statu
+        $personal_info->update([
+            "step" => 0,
+            "appointment_date" => date("Y-m-d h:i")
+        ]);
+        return view('forms.confirm')->with([
+            'Confrimed' => 'Your Appointment is set to be on',
+            'appointment' => date("Y-m-d h:i"),
+            'token' => $personal_info->unique_code, 
+            'person_id' => $personal_info->id
+        ]);
     }
 
     /**
