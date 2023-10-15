@@ -221,9 +221,6 @@
     <div class="copyright">
       &copy; Copyright <strong><span>. Uganda Institute of Information and Communications Technology. All Rights Reserved</span></strong>. All Rights Reserved
     </div>
-    <div class="credits">
-      Designed by <a href="#">Faith</a>
-    </div>
   </footer>
     <script src="{{ asset('/assets/plugins/jquery/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/caleandar-master/js/caleandar.js') }}"></script>

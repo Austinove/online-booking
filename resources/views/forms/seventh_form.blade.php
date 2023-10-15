@@ -441,6 +441,7 @@
 										<strong>Spause Details</strong>
 									</div>
 									<hr />
+									@if(!empty($spouse_info))
 									<div class="col-md-6 mb-2">
 										<span>
 											<strong class="form-label">Surname: </strong>
@@ -513,6 +514,13 @@
 											{{$spouse_info->state_nationality}}
 										</span>
 									</div>
+									@else
+									<div class="col-md-6 mb-2">
+										<span>
+											<strong class="form-label">No Spouse Details Found</strong>
+										</span>
+									</div>
+									@endif
 									
 
 
@@ -901,6 +909,7 @@
 										<strong>Details</strong>
 									</div>
 									<hr />
+									@if(!empty($guardian_info))
 									<div class="col-md-6 mb-2">
 										<span>
 											<strong class="form-label">Surname: </strong>
@@ -1011,6 +1020,13 @@
 											{{$guardian_info->house_no}}
 										</span>
 									</div>
+									@else
+									<div class="col-md-6 mb-2">
+										<span>
+											<strong class="form-label">No Spouse Details Found</strong>
+										</span>
+									</div>
+									@endif
 
 
 
