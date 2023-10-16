@@ -96,9 +96,8 @@ Route::middleware(['auth'])->group(function () {
         return view('backend.unattended_appointments');
     })->name('unattended_appointments');
 
-    Route::get('/application/{id}', function () {
-        return view('backend.application_details');
-    })->name('applicant');
+    Route::get('/application/{id}', [OfficialInfoController::class, "applicant"])->name('applicant');
+    Route::post('/appointment_date', [OfficialInfoController::class, "appointment_date"])->name('appointment_date');
 
     Route::get('/profile', function () {
         return view('backend.profile');

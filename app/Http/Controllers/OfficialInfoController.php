@@ -28,34 +28,24 @@ class OfficialInfoController extends Controller
     public function appointments()
     {
         $data = PersonalInfo::with("residence")->where("step", 0)->get();
-        // $row = [];
-        // foreach ($data as $key => $personal_row) {
-        //     $residence = Residence::where("person_id", $personal_row->id)->first();
-        // }
-        // $mother_info = Mother::where("person_id", $id)->first();
-        // $father_info = Father::where("person_id", $id)->first();
-        // $spouse_info = Spouse::where("person_id", $id)->first();
-        // $origin_info = OriginPlace::where("person_id", $id)->first();
-        // $birth_info = BirthPlace::where("person_id", $id)->first();
-        // // $residence_info = Residence::where("person_id", $id)->first();
-        // $return_data = [
-        //     'message' => 'Details Saved Successfully', 
-        //     'status' => 'success',
-        //     'personal_info' => $personal_info,
-        //     'guardian_info' => $guardian_info,
-        //     'mother_info' => $mother_info,
-        //     'father_info' => $father_info,
-        //     'spouse_info' => $spouse_info,
-        //     'origin_info' => $origin_info,
-        //     'birth_info' => $birth_info,
-        //     'residence_info' => $residence_info,
-        //     'token' => $token,
-        //     'person_id' => $id,
-        // ];
         return view('backend.appointments')->with([
             'data' => $data
         ]);
-        // return view('backend.appointments');
+    }
+
+    public function applicant($id) {
+        $data = PersonalInfo::with(["residence", "birthplace", "father", "guardian", "mother", "original_place", "spouse"])->find($id);
+        return view('backend.application_details')->with([
+            'data' => $data
+        ]);
+    }
+
+    public function appointment_date(Request $request) {
+        PersonalInfo::find($request->id)->update([
+            "appointment_date" => $request->app_date,
+            "step" => 10
+        ]);
+        return redirect()->route('applicant', ['id' => $request->id]); 
     }
 
     /**
