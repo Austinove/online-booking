@@ -1,6 +1,61 @@
  @extends('layouts.app')
 
 @section('content')
+	<div class="modal fade" data-bs-backdrop="static" id="request-changes" tabindex="-1">
+		<div class="modal-dialog  modal-lg">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title"><strong>Changes Required</strong></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body row d-flex px-5">
+        <form method="POST" class="col-md-12 mx-auto" action="{{ route('request_changes') }}">
+          @csrf
+          <div class="row col-md-12 my-2">
+                <p>Just provide some information about what is required to be changed, this will help the applicant to respond appropriately</p>
+                <div class="col-md-12 mb-4">
+                  <input class="form-control main" type="hidden" name="id" value="{{ $data->id }}">
+                  <strong for="dob" class="form-label mb-2">Information about the changes <small class="text-danger">*</small></strong>
+                  <textarea class="form-control main" required name="changes" cols="40" placeholder="Enter Request Information" rows="7"></textarea>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer px-5">
+            <a name="" id="" class="btn btn-secondary" href="#" data-bs-dismiss="modal" aria-label="Close" role="button"> 
+              Cancel <i class="ti-close"></i>
+            </a>
+            <button type="submit" class="btn btn-primary">Request  <i class="ti-check"></i></button>
+          </div>
+        </form>  
+			</div>
+		</div>
+	</div>
+  <div class="modal fade" data-bs-backdrop="static" id="complete-confirm" tabindex="-1">
+		<div class="modal-dialog  modal-lg">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title"><strong>Confirm Completion</strong></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body row d-flex">
+          <form method="POST" class="col-md-12 mx-auto" action="{{ route('finished_appointment') }}">
+            @csrf
+              <div class="alert alert-info" role="alert">
+                <h6 class="alert-heading"><strong>Do you want to complete Appointment?</strong></h6>
+                <h6 class="mb-0">Please note this has been sent to the applicant's email/Phone SMS</h6>
+              </div>
+              <input class="form-control main" type="hidden" name="id" value="{{ $data->id }}">
+            <div class="modal-footer">
+              <a name="" id="" class="btn btn-secondary" href="#" data-bs-dismiss="modal" aria-label="Close" role="button"> 
+                Cancel <i class="ti-close"></i>
+              </a>
+              <button type="submit" class="btn btn-primary">Complete  <i class="ti-check"></i></button>
+            </div>
+          </form>  
+        </div>
+			</div>
+		</div>
+	</div>
     <div class="pagetitle">
       <h1 class="my-3">{{$data->surname}} {{$data->given_name}} Details</h1>
       <nav>
@@ -28,8 +83,13 @@
               </h5>
               @endif
                 <div class="btn-group float-end" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-primary"><i class="bi bi-reply"></i> Request Changes</button>
-                    <button type="button" class="btn btn-success">Completed <i class="bi bi-check"></i></button>
+                  @if($data->step != 11)
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#request-changes"><i class="bi bi-reply"></i> Request Changes</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#complete-confirm">Completed <i class="bi bi-check"></i></button>
+                  @else
+                  <button type="button" disabled class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#request-changes"><i class="bi bi-reply"></i> Request Changes</button>
+                    <button type="button" disabled class="btn btn-success" data-bs-toggle="modal" data-bs-target="#complete-confirm">Completed <i class="bi bi-check"></i></button>
+                  @endif
                 </div>
             </div>
             <div class="card-body">

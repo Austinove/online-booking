@@ -88,16 +88,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/new-appointments', function () {
         return view('backend.new_appointments');
     })->name('new_appointments');
-    Route::get('/pending-appointments', function () {
-        return view('backend.pending_appointments');
-    })->name('pending_appointments');
-
-    Route::get('/unattended-appointments', function () {
-        return view('backend.unattended_appointments');
-    })->name('unattended_appointments');
-
+    
+    Route::get('/pending_appointments', [OfficialInfoController::class, "pending_appointments"])->name('pending_appointments');
     Route::get('/application/{id}', [OfficialInfoController::class, "applicant"])->name('applicant');
     Route::post('/appointment_date', [OfficialInfoController::class, "appointment_date"])->name('appointment_date');
+    Route::post('/request_changes', [OfficialInfoController::class, "request_changes"])->name('request_changes');
+    Route::post('/finished_appointment', [OfficialInfoController::class, "finished_appointment"])->name('finished_appointment');
 
     Route::get('/profile', function () {
         return view('backend.profile');
