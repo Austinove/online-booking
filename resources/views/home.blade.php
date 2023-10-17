@@ -23,8 +23,11 @@
                       <i class="bi bi-calendar-check-fill"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      @if(!empty($today_applications))
+                      <h6>{{$today_applications}}</h6>
+                      @else
+                      <h6>0</h6>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -41,8 +44,11 @@
                       <i class="bi bi-calendar-fill"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      @if(!empty($month_applications))
+                      <h6>{{$month_applications}}</h6>
+                      @else
+                      <h6>0</h6>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -58,8 +64,11 @@
                       <i class="bi bi-intersect"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                      @if(!empty($year_applications))
+                      <h6>{{$year_applications}}</h6>
+                      @else
+                      <h6>0</h6>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -72,56 +81,6 @@
                 <div class="card-body">
                   <h5 class="card-title">Applicants</h5>
                   <canvas id="barChart" style="max-height: 400px;"></canvas>
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new Chart(document.querySelector('#barChart'), {
-                        type: 'bar',
-                        data: {
-                          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-                          datasets: [{
-                            label: 'Applicants',
-                            data: [65, 59, 80, 81, 56, 55, 40, 60, 89, 92, 94, 30],
-                            backgroundColor: [
-                              'rgba(255, 99, 132, 0.2)',
-                              'rgba(255, 159, 64, 0.2)',
-                              'rgba(255, 205, 86, 0.2)',
-                              'rgba(75, 192, 192, 0.2)',
-                              'rgba(54, 162, 235, 0.2)',
-                              'rgba(153, 102, 255, 0.2)',
-                              'rgba(201, 203, 207, 0.2)',
-                              'rgba(255, 100, 102, 0.2)',
-                              'rgba(205, 109, 130, 0.2)',
-                              'rgba(250, 190, 132, 0.2)',
-                              'rgba(215, 89, 12, 0.2)',
-                              'rgba(215, 109, 120, 0.2)',
-                            ],
-                            borderColor: [
-                              'rgb(255, 99, 132)',
-                              'rgb(255, 159, 64)',
-                              'rgb(255, 205, 86)',
-                              'rgb(75, 192, 192)',
-                              'rgb(54, 162, 235)',
-                              'rgb(153, 102, 255)',
-                              'rgb(201, 203, 207)',
-                              'rgb(211, 201, 207)',
-                              'rgb(231, 213, 17)',
-                              'rgb(20, 203, 27)',
-                              'rgb(201, 23, 107)',
-                              'rgb(21, 203, 127)'
-                            ],
-                            borderWidth: 1
-                          }]
-                        },
-                        options: {
-                          scales: {
-                            y: {
-                              beginAtZero: true
-                            }
-                          }
-                        }
-                      });
-                    });
-                  </script>
                 </div>
               </div>
             </div>

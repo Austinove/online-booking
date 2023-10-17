@@ -27,8 +27,16 @@ class OfficialInfoController extends Controller
 
     public function appointments()
     {
-        $data = PersonalInfo::with("residence")->where("step", 0)->get();
+        $data = PersonalInfo::with("residence")->where("step", 0)->orwhere("step", 10)->orwhere("step", 11)->get();
         return view('backend.appointments')->with([
+            'data' => $data
+        ]);
+    }
+
+    public function pending_appointments()
+    {
+        $data = PersonalInfo::with("residence")->where("step", 10)->get();
+        return view('backend.pending_appointments')->with([
             'data' => $data
         ]);
     }
@@ -46,6 +54,27 @@ class OfficialInfoController extends Controller
             "step" => 10
         ]);
         return redirect()->route('applicant', ['id' => $request->id]); 
+    }
+
+    public function request_changes(Request $request) {
+        PersonalInfo::find($request->id)->update([
+            "changes" => $request->changes,
+            "step" => 7
+        ]);
+        return redirect()->route('appointments')->with([
+            'send_changes' => true
+        ]); 
+    }
+
+    public function finished_appointment(Request $request) {
+        PersonalInfo::find($request->id)->update([
+            "changes" => $request->changes,
+            "step" => 11
+        ]);
+        return redirect()->route('appointments')->with([
+            'send_changes' => true,
+            'message' => 'Appointment Completed Successfully'
+        ]); 
     }
 
     /**

@@ -17,85 +17,40 @@
                     <div class="card-body">
                         <h5 class="card-title">Pending Appointments</h5>
                         <p>List of all appointments, please use the inputs to filter the list</p>
-                        <!-- Table with stripped rows -->
                         <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">Names</th>
+                                <th scope="col">
+                                    Name
+                                </th>
                                 <th scope="col">Location</th>
-                                <th scope="col">Age</th>
+                                <th scope="col">Date of Birth</th>
                                 <th scope="col">App'n Date</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Brandon Jacob</td>
-                                <td>Kampala|Nakawa|Mutungo</td>
-                                <td>28</td>
-                                <td>2016-05-25</td>
-                                <td>
-                                    <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
-                                </td>
-                            </tr>
-                             <tr>
-                                <td>Bridie Kessler</td>
-                                <td>Mukono|Central|Ward</td>
-                                <td>35</td>
-                                <td>2014-12-05</td>
-                                <td>
-                                    <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ashleigh Langosh</td>
-                                <td>Kampala|Kawempe|Karwere</td>
-                                <td>45</td>
-                                <td>2011-08-12</td>
-                                <td>
-                                    <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Bridie Kessler</td>
-                                <td>Mukono|Central|Ward</td>
-                                <td>35</td>
-                                <td>2014-12-05</td>
-                                <td>
-                                    <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ashleigh Langosh</td>
-                                <td>Kampala|Kawempe|Karwere</td>
-                                <td>45</td>
-                                <td>2011-08-12</td>
-                                <td>
-                                    <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
-                                </td>
-                            </tr>
-                             <tr>
-                                <td>Bridie Kessler</td>
-                                <td>Mukono|Central|Ward</td>
-                                <td>35</td>
-                                <td>2014-12-05</td>
-                                <td>
-                                    <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ashleigh Langosh</td>
-                                <td>Kampala|Kawempe|Karwere</td>
-                                <td>45</td>
-                                <td>2011-08-12</td>
-                                <td>
-                                    <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="#" role="button">More...</a>
-                                </td>
-                            </tr>
-                        </tbody>
+                            <tbody>
+                                @if(!empty($data))
+                                    @foreach ($data as $info_row)
+                                    <tr>
+                                        <td>
+                                            {{$info_row->surname}} {{$info_row->given_name}}
+                                        </td>
+                                        <td>Kampala|Nakawa|Mutungo {{$info_row->residence->country}}| {{$info_row->residence->ditrict}}|{{$info_row->residence->county}}</td>
+                                        <td>{{$info_row->dob}}</td>
+                                        <td>{{$info_row->appointment_date}}</td>
+                                        <td>
+                                            <a name="" id="" class="btn btn-outline btn-sm btn-primary" href="{{ route('applicant', ['id' => $info_row->id]) }}" role="button">More...</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    No Applications Found
+                                </tr>
+                                @endif
+                            </tbody>
                         </table>
-                        <!-- End Table with stripped rows -->
-
                     </div>
                 </div>
             </div>

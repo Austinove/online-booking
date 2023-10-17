@@ -197,13 +197,6 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('unattended_appointments') }}">
-          <i class="bi bi-journal-bookmark-fill"></i>
-          <span>Unattended</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-
-      <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('profile') }}">
           <i class="bi bi-person-square"></i>
           <span>My Profile</span>
@@ -236,8 +229,68 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('/assets/js/main.js') }}"></script>
 
+    @if(!empty($send_changes) || !empty($message))
     <script>
+        //opening modal on form page
+        $(document).ready(function(){
+            $('#changes_sent').modal('show'); 
+        });
+    </script>
+    @endif
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new Chart(document.querySelector('#barChart'), {
+          type: 'bar',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+              label: 'Applicants',
+              data: [65, 59, 80, 81, 56, 55, 40, 60, 89, 92, 94, 30],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)',
+                'rgba(255, 100, 102, 0.2)',
+                'rgba(205, 109, 130, 0.2)',
+                'rgba(250, 190, 132, 0.2)',
+                'rgba(215, 89, 12, 0.2)',
+                'rgba(215, 109, 120, 0.2)',
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)',
+                'rgb(211, 201, 207)',
+                'rgb(231, 213, 17)',
+                'rgb(20, 203, 27)',
+                'rgb(201, 23, 107)',
+                'rgb(21, 203, 127)'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      });
+
+
+
+      //appointments
       var events = [
           { Date: new Date(2023, 10, 1), Title: "Doctor appointment at 3:25pm." },
           {
