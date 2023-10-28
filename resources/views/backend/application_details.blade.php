@@ -490,7 +490,7 @@
                           <div class="col-md-8 mb-4">
                             <input class="form-control main" type="hidden" name="id" value="{{ $data->id }}">
                             <label for="dob" class="form-label">Select Date <small class="text-danger">*</small></label>
-                            <input class="form-control main" name="app_date" min="<?php echo date('Y-m-d') ?>" type="date" placeholder="Set Appointment Date" required>
+                            <input class="form-control main" name="app_date" min="<?php echo date('Y-m-d') ?>" type="datetime-local" placeholder="Set Appointment Date" required>
                           </div>
                           <div class="col-md-8 d-flex mt-4">
                             <button type="submit" class="btn btn-primary ms-auto">Submit Appointment <i class="ti-check"></i></button>

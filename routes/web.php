@@ -9,6 +9,7 @@ use App\Http\Controllers\FatherController;
 use App\Http\Controllers\MotherController;
 use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\OfficialInfoController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,10 +84,14 @@ Route::get('/status', function () {
 //backend routes
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('bar_chart', [HomeController::class, "bar_graph"])->name('bar_chart');
+    Route::get('apex_chart', [HomeController::class, "apex_chart"])->name('apex_chart');
+    Route::get('appointments_data', [HomeController::class, "appointments_data"])->name('appointments_data');
+    Route::get('adults_children', [HomeController::class, "adults_children"])->name('adults_children');
     Route::get('/appointments', [OfficialInfoController::class, "appointments"])->name('appointments');
     Route::get('/new-appointments', function () {
-        return view('backend.new_appointments');
+        return view('backend.new_appointments')->with("set_appointments");
     })->name('new_appointments');
     
     Route::get('/pending_appointments', [OfficialInfoController::class, "pending_appointments"])->name('pending_appointments');
@@ -98,4 +103,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', function () {
         return view('backend.profile');
     })->name('profile');
+    Route::post('/edit_profile', [OfficialInfoController::class, "edit_profile"])->name('edit_profile');
 });

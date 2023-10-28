@@ -12,6 +12,7 @@ use App\Models\Spouse;
 use App\Models\OriginPlace;
 use App\Models\Residence;
 use App\Models\BirthPlace;
+use App\Models\User;
 
 class OfficialInfoController extends Controller
 {
@@ -75,6 +76,17 @@ class OfficialInfoController extends Controller
             'send_changes' => true,
             'message' => 'Appointment Completed Successfully'
         ]); 
+    }
+
+    public function edit_profile(Request $request) {
+        $user = User::find($request->id)->update([
+            'name' => $request->fullName,
+            'email' => $request->email
+        ]);
+        return redirect()->back()->with([
+            'message' => 'Profile Updated Successfully',
+            'status' => 'success'
+        ]);
     }
 
     /**

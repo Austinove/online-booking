@@ -12,11 +12,15 @@
     </div>
     <section class="section profile" style="margin-bottom: 13rem;">
       <div class="row d-flex">
-
         <div class="col-xl-11 mx-auto">
-
           <div class="card">
             <div class="card-body pt-3">
+              @if(!empty($message))
+              <div class="alert alert-{{ $status }} alert-dismissible fade show" role="alert">
+                <strong>{{ $message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @endif
               <ul class="nav nav-tabs nav-tabs-bordered">
                 <li class="nav-item">
                   <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
@@ -46,17 +50,19 @@
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-                  <form>
+                  <form method="POST" action="{{ route('edit_profile') }}">
+                    @csrf
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" value="{{auth()->user()->name}}" class="form-control" id="fullName" value="Kevin Anderson">
+                        <input name="fullName" type="text" value="{{auth()->user()->name}}" class="form-control" id="fullName">
+                        <input name="id" type="hidden" value="{{auth()->user()->id}}" class="form-control" >
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" value="{{auth()->user()->email}}" id="Email" value="k.anderson@example.com">
+                        <input name="email" type="email" class="form-control" value="{{auth()->user()->email}}" id="Email">
                       </div>
                     </div>
 

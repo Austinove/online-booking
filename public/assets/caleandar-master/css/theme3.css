@@ -78,10 +78,10 @@
     text-align: left;
 }
 .cld-title {
-    font-size: 10px;
+    font-size: 12px;
     display: block;
     margin: 0;
-    font-weight: normal;
+    font-weight: 600;
 }
 .cld-day:hover {
     background: #eee;
