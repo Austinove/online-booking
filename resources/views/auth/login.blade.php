@@ -2,7 +2,7 @@
 
 @section('layout-content')
 
-<section class="user-login my-5">
+<section class="user-login my-5 ">
     <div class="container">
         <div class="row">
             <div class="col-12 row d-flex">
@@ -42,5 +42,7 @@
             </div>
         </div>
     </div>
+    <br/>
+    <br/>
 </section>
 @endsection

@@ -121,23 +121,27 @@
 									@endif
 									<div class="col-md-6 mb-2">
 										<label for="surname" class="form-label">Surname<small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->surname : "" }}' type="text" name="surname" placeholder="Surname" required>
+										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->surname : "" }}' type="text" id="surname" name="surname" placeholder="Surname" required>
+										<span id="username_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="givenname" class="form-label">Given Name <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->given_name : "" }}' name="givenname" type="text" placeholder="Given Name" required>
+										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->given_name : "" }}' name="givenname" id="givenname" type="text" placeholder="Given Name" required>
+										<span id="givenname_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="othername" class="form-label">Other Name</label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->other_name : "" }}' name="othername" type="text" placeholder="Other Name">
+										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->other_name : "" }}' name="othername" id="othername" type="text" placeholder="Other Name">
+										<span id="othername_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="maidenname" class="form-label">Maiden Name</label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->maiden_name : "" }}' name="maidenname" type="text" placeholder="Maiden Name">
+										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->maiden_name : "" }}' name="maidenname" id="maidenname" type="text" placeholder="Maiden Name">
+										<span id="maidenname_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="dob" class="form-label">Date of Birth <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->dob : "" }}' name="dob" max="<?php echo date('Y-m-d') ?>" type="date" placeholder="Date of Birth" required>
+										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->dob : "" }}' name="dob" max="<?php echo date('2020-01-01') ?>" type="date" placeholder="Date of Birth" required>
 									</div>
 									<div class="col-md-10 mb-2">
 										<span>Contacts</span>
@@ -145,11 +149,17 @@
 									<hr />
 									<div class="col-md-6 mb-2">
 										<label for="email" class="form-label">Email Address</label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->email : "" }}' name="email" type="email" placeholder="Your Email Address">
+										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->email : "" }}' name="email" id="email" type="email" placeholder="Your Email Address">
+										<span id="email_span" class="text-danger"></span>
 									</div>
+									
 									<div class="col-md-6 mb-2">
 										<label for="mobile" class="form-label">Home/Mobile No. <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->mob_number : "" }}' name="mobile" type="number" placeholder="Mobile No" required>
+										<div class="input-group mb-3 input-group-lg">
+											<span class="input-group-text" id="basic-addon3">+256</span>
+											<input class="form-control form-contorl-md" value='{{!empty($personal_data)? $personal_data->mob_number : "" }}' name="mobile" id="mobile" type="number" placeholder="Mobile No" aria-describedby="basic-addon3" required>
+											<span id="mobile_span" class="text-danger"></span>
+										</div>
 									</div>
 									<div class="col-md-10 mb-2">
 										<span>Others</span>
@@ -157,15 +167,18 @@
 									<hr />
 									<div class="col-md-6 mb-2">
 										<label for="levelofeduc" class="form-label">Highest Level of Education <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->education_level : "" }}' name="levelofeduc" type="text" placeholder="Level of Education" required>
+										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->education_level : "" }}' name="levelofeduc" id="levelofeduc" type="text" placeholder="Level of Education" required>
+										<span id="levelofeduc_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="occupation" class="form-label">Occupation</label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->occupation : "" }}' name="occupation" type="text" placeholder="Occupation">
+										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->occupation : "" }}' name="occupation" id="occupation" type="text" placeholder="Occupation">
+										<span id="occupation_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="religion" class="form-label">Religion <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->religion : "" }}' name="religion" type="text" placeholder="Religion" required>
+										<input class="form-control main" value='{{!empty($personal_data)? $personal_data->religion : "" }}' name="religion" id="religion" type="text" placeholder="Religion" required>
+										<span id="religion_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="disability" class="form-label">Disabilities</label>
@@ -209,7 +222,7 @@
 									</div>
 									<hr />
 									<div class="col-md-12 d-flex mt-2">
-										<button type="submit" class="btn btn-primary ms-auto">Next Form <i class="ti-arrow-right"></i></button>
+										<button type="submit" id="first_submit" class="btn btn-primary ms-auto">Next Form <i class="ti-arrow-right"></i></button>
 									</div>
 									
 								</div>
