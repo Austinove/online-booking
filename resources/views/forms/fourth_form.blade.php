@@ -106,19 +106,23 @@
 									@endif
 									<div class="col-md-6 mb-2">
 										<label for="father_surname" class="form-label">Surname <small class="text-danger">*</small></label>
-										<input class="form-control main"  value='{{!empty($data)? $data->surname : "" }}' name="father_surname" type="text" placeholder="Surname" required>
+										<input class="form-control main"  value='{{!empty($data)? $data->surname : "" }}' name="father_surname" id="father_surname" type="text" placeholder="Surname" required>
+										<span id="father_surname_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_givenname" class="form-label">Given Name <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->given_name : "" }}' name="father_givenname" type="text" placeholder="Given Name" required>
+										<input class="form-control main" value='{{!empty($data)? $data->given_name : "" }}' name="father_givenname" id="father_givenname" type="text" placeholder="Given Name" required>
+										<span id="father_givenname_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_othername" class="form-label">Other Name</label>
-										<input class="form-control main" value='{{!empty($data)? $data->other_name : "" }}' name="father_othername" type="text" placeholder="Other Name">
+										<input class="form-control main" value='{{!empty($data)? $data->other_name : "" }}' name="father_othername"id="father_othername" type="text" placeholder="Other Name">
+										<span id="father_othername_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_nin" class="form-label">National ID Number (NIN) <small class="text-danger">*</small> </label>
-										<input class="form-control main" value='{{!empty($data)? $data->nin : "" }}' name="father_nin" type="text" placeholder="Father NIN">
+										<input class="form-control main" value='{{!empty($data)? $data->nin : "" }}' name="father_nin" id="father_nin" type="text" placeholder="Father NIN">
+										<span id="father_nin_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-10 mb-2">
 										<strong>Citzenship Type</strong>
@@ -141,7 +145,8 @@
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_dual" class="form-label">State Citzenship and Country <small>(If Dual Citzenship)</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->state_nationality : "" }}' name="father_dual" type="text" placeholder="Enter Citzenship/Country">
+										<input class="form-control main" value='{{!empty($data)? $data->state_nationality : "" }}' name="father_dual" id="father_dual" type="text" placeholder="Enter Citzenship/Country">
+										<span id="father_dual_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_living_status" class="form-label">Living Status <small class="text-danger">*</small></label>
@@ -158,7 +163,8 @@
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_occupation" class="form-label">Occupation<small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->occupation : "" }}' type="text" name="father_occupation" placeholder="Occupation">
+										<input class="form-control main" value='{{!empty($data)? $data->occupation : "" }}' type="text" name="father_occupation" id="father_occupation" placeholder="Occupation">
+										<span id="father_occupation_span" class="text-danger"></span>
 									</div>
 
 									<div class="col-md-10 mb-2">
@@ -167,35 +173,43 @@
 									<hr />
 									<div class="col-md-6 mb-2">
 										<label for="father_country" class="form-label">Country <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->country : "" }}' name="father_country" type="text" placeholder="Country" required>
+										<input class="form-control main" value='{{!empty($data)? $data->country : "" }}' name="father_country" id="father_country" type="text" placeholder="Country" required>
+										<span id="father_country_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_district" class="form-label">District <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->ditrict : "" }}' name="father_district" type="text" placeholder="District" required>
+										<input class="form-control main" value='{{!empty($data)? $data->ditrict : "" }}' name="father_district" id="father_district" type="text" placeholder="District" required>
+										<span id="father_district_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_county" class="form-label">County <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->county : "" }}'  name="father_county" type="text" placeholder="County" required>
+										<input class="form-control main" value='{{!empty($data)? $data->county : "" }}'  name="father_county" id="father_county" type="text" placeholder="County" required>
+										<span id="father_county_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_subcounty" class="form-label">Sub-County <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->sub_county : "" }}' name="father_subcounty" type="text" placeholder="Sub-County" required>
+										<input class="form-control main" value='{{!empty($data)? $data->sub_county : "" }}' name="father_subcounty" id="father_subcounty" type="text" placeholder="Sub-County" required>
+										<span id="father_subcounty_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_parish" class="form-label">Parish/Ward <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->parish : "" }}' name="father_parish" type="text" placeholder="Parish/Ward" required>
+										<input class="form-control main" value='{{!empty($data)? $data->parish : "" }}' name="father_parish" id="father_parish" type="text" placeholder="Parish/Ward" required>
+										<span id="father_parish_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_village" class="form-label">Village <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->village : "" }}'  name="father_village" type="text" placeholder="Village" required>
+										<input class="form-control main" value='{{!empty($data)? $data->village : "" }}'  name="father_village" id="father_village" type="text" placeholder="Village" required>
+										<span id="father_village_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_street" class="form-label">Street <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->street : "" }}'   name="father_street" type="text" placeholder="Street" required>
+										<input class="form-control main" value='{{!empty($data)? $data->street : "" }}'   name="father_street" id="father_street" type="text" placeholder="Street" required>
+										<span id="father_street_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="father_plot" class="form-label">Plot/House No. <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->house_no : "" }}'   name="father_plot" type="text" placeholder="Plot/House No." required>
+										<input class="form-control main" value='{{!empty($data)? $data->house_no : "" }}'   name="father_plot" id="father_plot" type="text" placeholder="Plot/House No." required>
+										<span id="father_plot_span" class="text-danger"></span>
 									</div>
 
 									<div class="col-md-10 mb-2">
@@ -204,42 +218,50 @@
 									<hr />
 									<div class="col-md-6 mb-2">
 										<label for="ofather_country" class="form-label">Country <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->ocountry : "" }}'  name="ofather_country" type="text" placeholder="Country" required>
+										<input class="form-control main" value='{{!empty($data)? $data->ocountry : "" }}'  name="ofather_country" id="ofather_country" type="text" placeholder="Country" required>
+										<span id="ofather_country_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="ofather_district" class="form-label">District <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->oditrict : "" }}'  name="ofather_district" type="text" placeholder="District" required>
+										<input class="form-control main" value='{{!empty($data)? $data->oditrict : "" }}'  name="ofather_district" id="ofather_district" type="text" placeholder="District" required>
+										<span id="ofather_district_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="ofather_county" class="form-label">County <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->ocounty : "" }}' name="ofather_county" type="text" placeholder="County" required>
+										<input class="form-control main" value='{{!empty($data)? $data->ocounty : "" }}' name="ofather_county" id="ofather_county" type="text" placeholder="County" required>
+										<span id="ofather_county_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="ofather_subcounty" class="form-label">Sub-County <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->osub_county : "" }}'  name="ofather_subcounty" type="text" placeholder="Sub-County" required>
+										<input class="form-control main" value='{{!empty($data)? $data->osub_county : "" }}'  name="ofather_subcounty" id="ofather_subcounty" type="text" placeholder="Sub-County" required>
+										<span id="ofather_subcounty_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="ofather_parish"  class="form-label">Parish/Ward <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->oparish : "" }}' name="ofather_parish" type="text" placeholder="Parish/Ward" required>
+										<input class="form-control main" value='{{!empty($data)? $data->oparish : "" }}' name="ofather_parish" id="ofather_parish" type="text" placeholder="Parish/Ward" required>
+										<span id="ofather_parish_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="ofather_village" class="form-label">Village <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->ovillage : "" }}' name="ofather_village" type="text" placeholder="Village" required>
+										<input class="form-control main" value='{{!empty($data)? $data->ovillage : "" }}' name="ofather_village" id="ofather_village" type="text" placeholder="Village" required>
+										<span id="ofather_village_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="ofather_street" class="form-label">Street <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->ostreet : "" }}' name="ofather_street" type="text" placeholder="Street" required>
+										<input class="form-control main" value='{{!empty($data)? $data->ostreet : "" }}' name="ofather_street" id="ofather_street" type="text" placeholder="Street" required>
+										<span id="ofather_street_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="ofather_plot" class="form-label">Plot/House No. <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->ohouse_no : "" }}' name="ofather_plot" type="text" placeholder="Plot/House No." required>
+										<input class="form-control main" value='{{!empty($data)? $data->ohouse_no : "" }}' name="ofather_plot" id="ofather_plot" type="text" placeholder="Plot/House No." required>
+										<span id="ofather_plot_span" class="text-danger"></span>
 									</div>
 									<hr />
 									<div class="col-md-12 d-flex mt-2">
 										<a name="" id="" class="btn btn-sm btn-secondary me-auto" href="{{ route('third_form', ['token' => $token,'id' => $person_id]) }}" role="button"> 
 											<i class="ti-arrow-left"></i> Previous
 										</a>
-										<button type="submit" class="btn btn-primary ms-auto">
+										<button type="submit" id="fourth_submit" class="btn btn-primary ms-auto">
 											Next Form <i class="ti-arrow-right"></i>
 										</button>
 									</div>

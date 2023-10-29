@@ -12,6 +12,7 @@ use App\Models\Spouse;
 use App\Models\OriginPlace;
 use App\Models\Residence;
 use App\Models\BirthPlace;
+use App\Models\User;
 
 class OfficialInfoController extends Controller
 {
@@ -53,6 +54,35 @@ class OfficialInfoController extends Controller
             "appointment_date" => $request->app_date,
             "step" => 10
         ]);
+        $personal_details = PersonalInfo::find($request->id);
+
+        // $to = $personal_details->email;
+        $to = "bryanovicaustenove@gmail.com";
+        $subject = "Appointment Confirmation";
+        $message = "
+        <html>
+        <head>
+        <title>Appointment Confirmation</title>
+        </head>
+        <body>
+        <p><strong>Dear ".$personal_details->surname."</strong></p>
+        <p>Please take note of your appointment date below!</p>
+        <p>Appointment Date: <strong><u>".date('d-m-Y', strtotime($request->app_date))." AT ".date('H:i A', strtotime($request->app_date))."</u></strong></p>
+        <p>Please reach out offices physically for the interview on that specified data and time.</p>
+        <p>Kind regards.</p>
+        </body>
+        </html>
+        ";
+
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        // More headers
+        $headers .= 'From: <onlinebooking@example.com>' . "\r\n";
+
+        mail($to,$subject,$message,$headers);
+
         return redirect()->route('applicant', ['id' => $request->id]); 
     }
 
@@ -75,6 +105,17 @@ class OfficialInfoController extends Controller
             'send_changes' => true,
             'message' => 'Appointment Completed Successfully'
         ]); 
+    }
+
+    public function edit_profile(Request $request) {
+        $user = User::find($request->id)->update([
+            'name' => $request->fullName,
+            'email' => $request->email
+        ]);
+        return redirect()->back()->with([
+            'message' => 'Profile Updated Successfully',
+            'status' => 'success'
+        ]);
     }
 
     /**

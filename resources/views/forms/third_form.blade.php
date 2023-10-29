@@ -1,11 +1,6 @@
 @extends('layouts.layout')
 
 @section('layout-content')
-<!-- <script>
-	window.onbeforeunload = function() {
-	return "Take note of the Unique CodeData";
-	};
-</script> -->
 <section class="mt-4">
 	<div class="container">
 		<div class="row">
@@ -106,23 +101,28 @@
 									@endif
 									<div class="col-md-6 mb-2">
 										<label for="ssurname" class="form-label">Surname <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->surname : "" }}' name="ssurname" type="text" placeholder="Surname" required>
+										<input class="form-control main" value='{{!empty($data)? $data->surname : "" }}' name="ssurname" id="ssurname" type="text" placeholder="Surname" required>
+										<span id="ssurname_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="sgivenname" class="form-label">Given Name <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->given_name : "" }}' name="sgivenname" type="text" placeholder="Given Name" required>
+										<input class="form-control main" value='{{!empty($data)? $data->given_name : "" }}' name="sgivenname" id="sgivenname" type="text" placeholder="Given Name" required>
+										<span id="sgivenname_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="sothername" class="form-label">Other Name</label>
-										<input class="form-control main" value='{{!empty($data)? $data->other_name : "" }}' name="sothername" type="text" placeholder="Other Name">
+										<input class="form-control main" value='{{!empty($data)? $data->other_name : "" }}' name="sothername" id="sothername" type="text" placeholder="Other Name">
+										<span id="sothername_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="smaidenname" class="form-label">Maiden Name</label>
-										<input class="form-control main" value='{{!empty($data)? $data->maiden_name : "" }}' name="smaidenname" type="text" placeholder="Maiden Name">
+										<input class="form-control main" value='{{!empty($data)? $data->maiden_name : "" }}' name="smaidenname" id="smaidenname" type="text" placeholder="Maiden Name">
+										<span id="smaidenname_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="snin" class="form-label">National ID Number (NIN) </label>
-										<input class="form-control main" value='{{!empty($data)? $data->nin : "" }}' name="snin" type="text" placeholder="NIN">
+										<input class="form-control main" value='{{!empty($data)? $data->nin : "" }}' name="snin" id="snin" type="text" placeholder="NIN">
+										<span id="snin_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-10 mb-2">
 										<span>Citzenship Type</span>
@@ -145,11 +145,13 @@
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="sdual" class="form-label">State Citzenship and Country <small>(If Dual Citzenship)</small></label>
-										<input class="form-control main" name="sdual" value='{{!empty($data)? $data->state_nationality : "" }}' type="text" placeholder="Enter Citzenship/Country">
+										<input class="form-control main" name="sdual" id="sdual" value='{{!empty($data)? $data->state_nationality : "" }}' type="text" placeholder="Enter Citzenship/Country">
+										<span id="sdual_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="smariage_place" class="form-label">Place of Marriage <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->marriage_place : "" }}' name="smariage_place" type="text" placeholder="Place of Marriage" required>
+										<input class="form-control main" value='{{!empty($data)? $data->marriage_place : "" }}' name="smariage_place" id="smariage_place" type="text" placeholder="Place of Marriage" required>
+										<span id="smariage_place_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="dom" class="form-label">Date of Marriage <small class="text-danger">*</small></label>
@@ -170,18 +172,20 @@
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="mariage_number" class="form-label">Marriage Certificate No.<small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->marriage_cert : "" }}' type="text" name="mariage_number" placeholder="Certificate Number">
+										<input class="form-control main" value='{{!empty($data)? $data->marriage_cert : "" }}' type="text" name="mariage_number" id="mariage_number" placeholder="Certificate Number">
+										<span id="mariage_number_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="other_spouses" class="form-label">Number of Other Spouses<small>(Optional)</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->spouse_number : "" }}' type="number" name="other_spouses" placeholder="Other Spouces Number">
+										<input class="form-control main" value='{{!empty($data)? $data->spouse_number : "" }}' type="number" name="other_spouses" id="other_spouses" placeholder="Other Spouces Number">
+										<span id="other_spouses_span" class="text-danger"></span>
 									</div>
 									<hr />
 									<div class="col-md-12 d-flex mt-2">
 										<a name="" id="" class="btn btn-sm btn-secondary me-auto" href="{{ route('return_step2', ['token' => $token,'id' => $person_id]) }}" role="button"> 
 											<i class="ti-arrow-left"></i> Previous
 										</a>
-										<button type="submit" class="btn btn-primary ms-auto">
+										<button type="submit" id="third_submit" class="btn btn-primary ms-auto">
 											Next Form <i class="ti-arrow-right"></i>
 										</button>
 									</div>

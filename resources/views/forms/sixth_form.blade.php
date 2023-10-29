@@ -88,15 +88,18 @@
 									@endif
 									<div class="col-md-6 mb-2">
 										<label for="guardian_surname" class="form-label">Surname <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->surname : "" }}' name="guardian_surname" type="text" placeholder="Surname" required>
+										<input class="form-control main" value='{{!empty($data)? $data->surname : "" }}' name="guardian_surname" id="guardian_surname" type="text" placeholder="Surname" required>
+										<span id="guardian_surname_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_givenname" class="form-label">Given Name <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->given_name : "" }}' name="guardian_givenname" type="text" placeholder="Given Name" required>
+										<input class="form-control main" value='{{!empty($data)? $data->given_name : "" }}' name="guardian_givenname" id="guardian_givenname" type="text" placeholder="Given Name" required>
+										<span id="guardian_givenname_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_othername" class="form-label">Other Name</label>
-										<input class="form-control main" value='{{!empty($data)? $data->other_name : "" }}' name="guardian_othername" type="text" placeholder="Other Name">
+										<input class="form-control main" value='{{!empty($data)? $data->other_name : "" }}' name="guardian_othername" id="guardian_othername" type="text" placeholder="Other Name">
+										<span id="guardian_othername_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_pasport_no" class="form-label">Passport No. <small>(A must for Foreigners)</small> </label>
@@ -104,7 +107,8 @@
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_nin" class="form-label">National ID Number (NIN) </label>
-										<input class="form-control main" value='{{!empty($data)? $data->nin : "" }}' name="guardian_nin" type="text" placeholder="Guardian NIN">
+										<input class="form-control main" value='{{!empty($data)? $data->nin : "" }}' name="guardian_nin" id="guardian_nin" type="text" placeholder="Guardian NIN">
+										<span id="guardian_nin_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-10 mb-2">
 										<strong>Citzenship Type</strong>
@@ -127,11 +131,13 @@
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_dual" class="form-label">State Citzenship and Country <small>(If Dual Citzenship)</small></label>
-										<input class="form-control main"  value='{{!empty($data)? $data->state_nationality : "" }}' name="guardian_dual" type="text" placeholder="Enter Citzenship/Country">
+										<input class="form-control main"  value='{{!empty($data)? $data->state_nationality : "" }}' name="guardian_dual" id="guardian_dual" type="text" placeholder="Enter Citzenship/Country">
+										<span id="guardian_dual_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_occupation" class="form-label">Occupation<small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->occupation : "" }}' type="text" name="guardian_occupation" placeholder="Occupation">
+										<input class="form-control main" value='{{!empty($data)? $data->occupation : "" }}' type="text" name="guardian_occupation" id="guardian_occupation" placeholder="Occupation">
+										<span id="guardian_occupation_span" class="text-danger"></span>
 									</div>
 
 									<div class="col-md-10 mb-2">
@@ -140,31 +146,38 @@
 									<hr />
 									<div class="col-md-6 mb-2">
 										<label for="guardian_country" class="form-label">Country <small class="text-danger">*</small></label>
-										<input class="form-control main"  value='{{!empty($data)? $data->country : "" }}' name="guardian_country" type="text" placeholder="Country" required>
+										<input class="form-control main"  value='{{!empty($data)? $data->country : "" }}' name="guardian_country" id="guardian_country" type="text" placeholder="Country" required>
+										<span id="guardian_country_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_district" class="form-label">District <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->ditrict : "" }}' name="guardian_district" type="text" placeholder="District" required>
+										<input class="form-control main" value='{{!empty($data)? $data->ditrict : "" }}' name="guardian_district" id="guardian_district" type="text" placeholder="District" required>
+										<span id="guardian_district_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_county" class="form-label">County <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->county : "" }}' name="guardian_county" type="text" placeholder="County" required>
+										<input class="form-control main" value='{{!empty($data)? $data->county : "" }}' name="guardian_county" id="guardian_county" type="text" placeholder="County" required>
+										<span id="guardian_county_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_subcounty" class="form-label">Sub-County <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->sub_county : "" }}' name="guardian_subcounty" type="text" placeholder="Sub-County" required>
+										<input class="form-control main" value='{{!empty($data)? $data->sub_county : "" }}' name="guardian_subcounty" id="guardian_subcounty" type="text" placeholder="Sub-County" required>
+										<span id="guardian_subcounty_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_parish" class="form-label">Parish/Ward <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->parish : "" }}' name="guardian_parish" type="text" placeholder="Parish/Ward" required>
+										<input class="form-control main" value='{{!empty($data)? $data->parish : "" }}' name="guardian_parish" id="guardian_parish" type="text" placeholder="Parish/Ward" required>
+										<span id="guardian_parish_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_village" class="form-label">Village <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->village : "" }}' name="guardian_village" type="text" placeholder="Village" required>
+										<input class="form-control main" value='{{!empty($data)? $data->village : "" }}' name="guardian_village" id="guardian_village" type="text" placeholder="Village" required>
+										<span id="guardian_village_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_street" class="form-label">Street <small class="text-danger">*</small></label>
-										<input class="form-control main" value='{{!empty($data)? $data->street : "" }}' name="guardian_street" type="text" placeholder="Street" required>
+										<input class="form-control main" value='{{!empty($data)? $data->street : "" }}' name="guardian_street" id="guardian_street" type="text" placeholder="Street" required>
+										<span id="guardian_street_span" class="text-danger"></span>
 									</div>
 									<div class="col-md-6 mb-2">
 										<label for="guardian_plot" class="form-label">Plot/House No. <small class="text-danger">*</small></label>
@@ -175,7 +188,7 @@
 										<a name="" id="" class="btn btn-sm btn-secondary me-auto" href="{{ route('fifth_form', ['token' => $token,'id' => $person_id]) }}" role="button"> 
 											<i class="ti-arrow-left"></i> Previous
 										</a>
-										<button type="submit" class="btn btn-primary ms-auto">
+										<button type="submit" id="sixth_submit" class="btn btn-primary ms-auto">
 											Next Form <i class="ti-arrow-right"></i>
 										</button>
 									</div>
