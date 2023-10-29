@@ -161,9 +161,9 @@
                     }
                 }
 
-                function validateNumber(text, inputId, errorDisplayer, errorText, type="") 
+                function validateNumber(text, inputId, errorDisplayer, errorText, type=" ") 
                 {
-                    if(type=""){
+                    if(type==" "){
                         if (text.length != 9 || (text.charAt(0) != 7 && text.charAt(0) != 3 && text.charAt(0) != 2 && text.charAt(0) != 4)) {
                             if(!pageErrors.includes(errorText)){
                                 pageErrors.push(errorText);
